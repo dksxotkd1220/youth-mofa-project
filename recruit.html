@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모집공고 - 지구청년</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans KR","Apple SD Gothic Neo","맑은 고딕",sans-serif;font-size:14px;color:#333;background:#fff}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer}
+
+#header{background:#333;height:58px}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 50px;display:flex;align-items:center;height:58px}
+.logo{display:flex;align-items:center;flex:none;margin-right:auto}
+.logo img{height:36px}
+#gnb{display:flex;align-items:stretch}
+.gnb-item a{display:flex;align-items:center;height:58px;padding:0 22px;color:rgba(255,255,255,.85);font-size:13px;font-weight:500;border-bottom:3px solid transparent;transition:color .15s}
+.gnb-item a:hover{color:#fff}
+.gnb-item.on a{color:#fff;font-weight:700;border-bottom-color:#3a9b8e}
+
+.page-banner{height:165px;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42)),linear-gradient(135deg,#2a3040 0%,#4a5070 100%);display:flex;align-items:center;justify-content:center;text-align:center}
+.page-banner h1{font-size:32px;font-weight:700;color:#fff;letter-spacing:-0.02em}
+.banner-bar{display:block;width:1px;height:18px;background:rgba(255,255,255,.55);margin:10px auto 0}
+
+.content-area{max-width:940px;margin:0 auto;padding:36px 20px 70px}
+
+.search-wrap{background:#f9f9f9;border:1px solid #ebebeb;padding:18px 24px;margin-bottom:28px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.s-select{border:1px solid #d4d4d4;background:#fff;padding:0 28px 0 10px;font-size:13px;color:#444;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;cursor:pointer;outline:none;height:36px}
+.s-select-wide{min-width:180px}
+.s-input{border:1px solid #d4d4d4;padding:0 12px;font-size:13px;height:36px;width:220px;outline:none}
+.s-input:focus{border-color:#3a9b8e}
+.s-btn{background:#3a9b8e;border:none;color:#fff;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+.s-btn svg{width:15px;height:15px;stroke:#fff;stroke-width:2.5;fill:none}
+
+.total-count{font-size:13px;color:#555;margin-bottom:16px}
+.total-count strong{color:#3a9b8e;font-weight:700}
+
+.board-table{width:100%;border-collapse:collapse;margin-bottom:28px}
+.board-table th{padding:11px 14px;font-size:13px;font-weight:600;color:#555;text-align:center;border-top:2px solid #333;border-bottom:1px solid #ddd;background:#f9f9f9}
+.board-table td{padding:12px 14px;font-size:13px;color:#444;border-bottom:1px solid #eee;text-align:center;vertical-align:middle}
+.board-table td.biz-cell{color:#3a9b8e;text-align:left;cursor:pointer}
+.board-table td.biz-cell:hover{text-decoration:underline}
+.board-table td.title-cell{text-align:left;cursor:pointer;color:#333}
+.board-table td.title-cell:hover{color:#3a9b8e}
+.board-table td.period-cell{font-size:12px;color:#666}
+.board-table tbody tr:hover{background:#f9fffe}
+
+.badge-closed{display:inline-block;background:#e0e0e0;color:#777;font-size:11px;font-weight:600;padding:3px 8px;border-radius:2px;white-space:nowrap}
+.badge-open{display:inline-block;background:#3a9b8e;color:#fff;font-size:11px;font-weight:600;padding:3px 8px;border-radius:2px;white-space:nowrap}
+
+.pagination{display:flex;justify-content:center;align-items:center;gap:2px;margin-top:28px}
+.pg-btn{min-width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid #e0e0e0;font-size:13px;color:#666;background:#fff;cursor:pointer;transition:all .15s}
+.pg-btn.active,.pg-btn:hover{background:#3a9b8e;border-color:#3a9b8e;color:#fff}
+.pg-arr{min-width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid #e0e0e0;font-size:12px;color:#888;background:#fff;cursor:pointer}
+.pg-arr:hover{background:#f5f5f5}
+
+#footer{background:#444;padding:20px 0 0}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 50px;display:flex;align-items:center}
+.foot-logo{flex:none;margin-right:30px}
+.foot-logo img{height:38px}
+.foot-info{flex:1;font-size:11px;color:#aaa;line-height:1.9}
+.foot-right{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:10px;margin-left:20px}
+.foot-select-wrap{display:flex}
+.foot-select{min-width:110px;padding:6px 22px 6px 10px;background:#555;border:1px solid #666;color:#ccc;font-size:12px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center;cursor:pointer;outline:none}
+.foot-select-btn{background:#555;border:1px solid #666;border-left:none;color:#ccc;font-size:12px;padding:6px 10px;cursor:pointer}
+.foot-mofa img{height:36px;width:auto;opacity:.85}
+.footer-bottom{margin-top:16px;background:#3a3a3a;padding:8px 50px}
+.footer-bottom p{font-size:11px;color:#888}
+</style>
+</head>
+<body>
+<header id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="logo2.png" alt="지구청년"></a>
+    <nav id="gnb">
+      <div class="gnb-item"><a href="intro.html">지구청년 소개</a></div>
+      <div class="gnb-item"><a href="overseas.html">해외진출 지원사업</a></div>
+      <div class="gnb-item"><a href="activity.html">활동공유</a></div>
+      <div class="gnb-item on"><a href="recruit.html">모집공고</a></div>
+      <div class="gnb-item"><a href="related.html">관련사이트</a></div>
+    </nav>
+  </div>
+</header>
+
+<div class="page-banner">
+  <div>
+    <h1>모집공고</h1>
+    <span class="banner-bar"></span>
+  </div>
+</div>
+
+<main>
+  <div class="content-area">
+    <div class="search-wrap">
+      <select class="s-select s-select-wide">
+        <option>사업별 모집공고 보기</option>
+        <option>청년, 국제 기구에 나아가다</option>
+        <option>청년, 행복을 나누다</option>
+        <option>청년, 해외 인턴이 되다</option>
+        <option>청년, 공공외교관이 되다</option>
+        <option>청년, 해외 생활을 경험하다</option>
+        <option>청년, 해외취업에 도전하다</option>
+      </select>
+      <select class="s-select"><option>제목</option><option>내용</option></select>
+      <input class="s-input" type="text" placeholder="검색어를 입력하세요">
+      <button class="s-btn" aria-label="검색">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      </button>
+    </div>
+
+    <p class="total-count">총 <strong>161</strong>건</p>
+
+    <table class="board-table">
+      <thead>
+        <tr>
+          <th style="width:70px">상태</th>
+          <th style="width:200px">사업</th>
+          <th>제목</th>
+          <th style="width:160px">모집기간</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge-closed">마감</span></td>
+          <td class="biz-cell">청년, 공공외교관이 되다</td>
+          <td class="title-cell">주스페인대사관 계약직 행정직원 채용공고</td>
+          <td class="period-cell">2025-05-22 ~ 2025-05-22</td>
+        </tr>
+        <tr>
+          <td><span class="badge-closed">마감</span></td>
+          <td class="biz-cell">청년, 해외취업에 도전하다</td>
+          <td class="title-cell">주휴스턴총영사관 일반직 행정직원 채용공고</td>
+          <td class="period-cell">2025-05-20 ~ 2025-05-20</td>
+        </tr>
+        <tr>
+          <td><span class="badge-closed">마감</span></td>
+          <td class="biz-cell">청년, 해외취업에 도전하다</td>
+          <td class="title-cell">주싱가포르대사관 임시직 행정직원 채용공고</td>
+          <td class="period-cell">2025-04-16 ~ 2025-04-16</td>
+        </tr>
+        <tr>
+          <td><span class="badge-closed">마감</span></td>
+          <td class="biz-cell">청년, 해외취업에 도전하다</td>
+          <td class="title-cell">주뉴욕총영사관 일반직 행정직원 채용공고 [장애인 제한 경쟁]</td>
+          <td class="period-cell">2025-04-10 ~ 2025-04-10</td>
+        </tr>
+        <tr>
+          <td><span class="badge-closed">마감</span></td>
+          <td class="biz-cell">청년, 해외취업에 도전하다</td>
+          <td class="title-cell">주로스앤젤레스총영사관 일반직 행정직원 채용공고</td>
+          <td class="period-cell">2025-04-01 ~ 2025-04-01</td>
+        </tr>
+        <tr>
+          <td><span class="badge-closed">마감</span></td>
+          <td class="biz-cell">청년, 해외취업에 도전하다</td>
+          <td class="title-cell">주시드니총영사관 일반직 행정직원 채용공고</td>
+          <td class="period-cell">2025-03-28 ~ 2025-03-28</td>
+        </tr>
+        <tr>
+          <td><span class="badge-closed">마감</span></td>
+          <td class="biz-cell">청년, 해외취업에 도전하다</td>
+          <td class="title-cell">주상하이총영사관 일반직 행정직원 채용공고</td>
+          <td class="period-cell">2025-03-20 ~ 2025-03-20</td>
+        </tr>
+        <tr>
+          <td><span class="badge-open">모집중</span></td>
+          <td class="biz-cell">청년, 해외취업에 도전하다</td>
+          <td class="title-cell">주애틀랜타총영사관 일반직 행정직원 채용공고</td>
+          <td class="period-cell">2025-06-01 ~ 2025-06-15</td>
+        </tr>
+        <tr>
+          <td><span class="badge-open">모집중</span></td>
+          <td class="biz-cell">청년, 해외취업에 도전하다</td>
+          <td class="title-cell">주중국대사관 일반직 행정직원 채용공고</td>
+          <td class="period-cell">2025-06-03 ~ 2025-06-20</td>
+        </tr>
+        <tr>
+          <td><span class="badge-open">모집중</span></td>
+          <td class="biz-cell">청년, 공공외교관이 되다</td>
+          <td class="title-cell">2025년 재외공관 공공외교 현장실습원 모집 공고</td>
+          <td class="period-cell">2025-06-01 ~ 2025-06-30</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button class="pg-arr">≪</button>
+      <button class="pg-arr">＜</button>
+      <button class="pg-btn active">1</button>
+      <button class="pg-btn">2</button>
+      <button class="pg-btn">3</button>
+      <button class="pg-btn">4</button>
+      <button class="pg-btn">5</button>
+      <button class="pg-arr">＞</button>
+      <button class="pg-arr">≫</button>
+    </div>
+  </div>
+</main>
+
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="foot-logo"><img src="logo2.png" alt="지구청년"></div>
+    <div class="foot-info">
+      주소 : 03172 서울특별시 종로구 사직로8길 60&nbsp;&nbsp;전화번호 : 02-2100-2114(주) 7000,7100(야)&nbsp;&nbsp;팩스 : 02-2100-7999<br>
+      본 홈페이지의 모든 권리는 외교부에 귀속됩니다.&nbsp;&nbsp;Copyright ⓒ 2012 MOFA. All Rights Reserved.
+    </div>
+    <div class="foot-right">
+      <div class="foot-select-wrap">
+        <select class="foot-select"><option>관련사이트</option><option>외교부</option><option>워킹홀리데이인포센터</option></select>
+        <button class="foot-select-btn">GO</button>
+      </div>
+      <div class="foot-mofa"><img src="mologo.png" alt="외교부"></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>ⓒ Ministry of Foreign Affairs. All rights reserved.</p></div>
+</footer>
+</body>
+</html>

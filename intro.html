@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>지구청년 소개 - 지구청년</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans KR","Apple SD Gothic Neo","맑은 고딕",sans-serif;font-size:14px;color:#333;background:#fff}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer}
+
+#header{background:#333;height:58px}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 50px;display:flex;align-items:center;height:58px}
+.logo{display:flex;align-items:center;flex:none;margin-right:auto}
+.logo img{height:36px}
+#gnb{display:flex;align-items:stretch}
+.gnb-item a{display:flex;align-items:center;height:58px;padding:0 22px;color:rgba(255,255,255,.85);font-size:13px;font-weight:500;border-bottom:3px solid transparent;transition:color .15s}
+.gnb-item a:hover{color:#fff}
+.gnb-item.on a{color:#fff;font-weight:700;border-bottom-color:#3a9b8e}
+
+.page-banner{height:165px;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42)),linear-gradient(135deg,#3a5060 0%,#5a7a8a 100%);display:flex;align-items:center;justify-content:center;text-align:center}
+.page-banner h1{font-size:32px;font-weight:700;color:#fff;letter-spacing:-0.02em}
+.banner-bar{display:block;width:1px;height:18px;background:rgba(255,255,255,.55);margin:10px auto 0}
+
+.content-area{max-width:940px;margin:0 auto;padding:50px 20px 70px}
+
+.intro-top{display:flex;align-items:flex-start;gap:40px;margin-bottom:50px}
+.intro-logo-wrap{flex:none;width:160px}
+.intro-logo-wrap img{width:160px;height:auto}
+.intro-text{flex:1;font-size:14px;line-height:2;color:#444}
+.intro-text .title-line{font-size:16px;font-weight:700;color:#333;margin-bottom:14px}
+.intro-text p{margin-bottom:12px}
+.intro-text a{color:#3a9b8e}
+
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.photo-card{position:relative;overflow:hidden;cursor:pointer}
+.photo-card-img{height:190px;display:flex;align-items:flex-end;justify-content:flex-start;padding:14px 16px;background-size:cover;background-position:center}
+.photo-card-img span{color:#fff;font-size:14px;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.5);line-height:1.4}
+
+#footer{background:#444;padding:20px 0 0}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 50px;display:flex;align-items:center;gap:0}
+.foot-logo{display:flex;align-items:center;flex:none;margin-right:30px}
+.foot-logo img{height:38px}
+.foot-info{flex:1;font-size:11px;color:#aaa;line-height:1.9}
+.foot-right{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:10px;margin-left:20px}
+.foot-select-wrap{display:flex}
+.foot-select{min-width:110px;padding:6px 22px 6px 10px;background:#555;border:1px solid #666;color:#ccc;font-size:12px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center;cursor:pointer;outline:none}
+.foot-select-btn{background:#555;border:1px solid #666;border-left:none;color:#ccc;font-size:12px;padding:6px 10px;cursor:pointer}
+.foot-mofa img{height:36px;width:auto;opacity:.85}
+.footer-bottom{margin-top:16px;background:#3a3a3a;padding:8px 50px}
+.footer-bottom p{font-size:11px;color:#888}
+</style>
+</head>
+<body>
+<header id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="logo2.png" alt="지구청년">
+    </a>
+    <nav id="gnb">
+      <div class="gnb-item on"><a href="intro.html">지구청년 소개</a></div>
+      <div class="gnb-item"><a href="overseas.html">해외진출 지원사업</a></div>
+      <div class="gnb-item"><a href="activity.html">활동공유</a></div>
+      <div class="gnb-item"><a href="recruit.html">모집공고</a></div>
+      <div class="gnb-item"><a href="related.html">관련사이트</a></div>
+    </nav>
+  </div>
+</header>
+
+<div class="page-banner">
+  <div>
+    <h1>지구청년 소개</h1>
+    <span class="banner-bar"></span>
+  </div>
+</div>
+
+<main>
+  <div class="content-area">
+    <div class="intro-top">
+      <div class="intro-logo-wrap">
+        <img src="logo.png" alt="지구청년">
+      </div>
+      <div class="intro-text">
+        <p class="title-line">지구청년 모두 모여라!!!</p>
+        <p>지구청년은 우리 청년들이 외교부와 외교부 산하기관의<br>청년 해외진출지원 사업에 관한 정보를 한눈에 볼 수 있도록 하기 위한<br><strong>통합브랜드입니다.</strong></p>
+        <p>국제기구초급전문가, 유엔자원봉사단, 다자협력전문가, 차세대아프리카전문가 등의 국제기구 진출지원사업, 월드프렌즈 봉사단, 중남미 지역기구 인턴, 에너지관련 국제기구 인턴, KF 글로벌 챌린저, 재외동포재단 한상기업 인턴 등 인턴십 프로그램, 재외공관 공공외교현장실습원, 워킹홀리데이 등 이 다양한 프로그램을 한눈에 확인해볼 수 있습니다.</p>
+        <p>지금 관심 있는 분야를 클릭해서 상세 정보를 확인하고, <a href="activity.html">체험수기</a>를 읽어보세요.<br>전 세계가 여러분의 무대입니다.</p>
+        <p>외교부와 함께 당당한 세계의 주인공, 지구청년이 되어 보세요!!!<br>문의사항이 있으시면 지구청년에게 메일(<a href="mailto:youth@mofa.go.kr">youth@mofa.go.kr</a>)을 보내주세요.</p>
+      </div>
+    </div>
+
+    <div class="photo-grid">
+      <a href="overseas.html" class="photo-card">
+        <div class="photo-card-img" style="background:linear-gradient(rgba(0,60,40,.55),rgba(0,60,40,.55)),linear-gradient(135deg,#1a4a38,#3a8a6a)">
+          <span>청년, 국제 기구에 나아가다</span>
+        </div>
+      </a>
+      <a href="overseas.html" class="photo-card">
+        <div class="photo-card-img" style="background:linear-gradient(rgba(40,60,20,.55),rgba(40,60,20,.55)),linear-gradient(135deg,#3a6020,#6aaa40)">
+          <span>청년, 행복을 나누다</span>
+        </div>
+      </a>
+      <a href="overseas.html" class="photo-card">
+        <div class="photo-card-img" style="background:linear-gradient(rgba(60,20,0,.55),rgba(60,20,0,.55)),linear-gradient(135deg,#8a3010,#d06020)">
+          <span>청년, 해외 인턴이 되다</span>
+        </div>
+      </a>
+      <a href="overseas.html" class="photo-card">
+        <div class="photo-card-img" style="background:linear-gradient(rgba(0,40,80,.55),rgba(0,40,80,.55)),linear-gradient(135deg,#1a3a6a,#3a6aaa)">
+          <span>청년, 공공외교관이 되다</span>
+        </div>
+      </a>
+      <a href="overseas.html" class="photo-card">
+        <div class="photo-card-img" style="background:linear-gradient(rgba(0,60,60,.55),rgba(0,60,60,.55)),linear-gradient(135deg,#1a5a5a,#3aaaa0)">
+          <span>청년, 해외 생활을 경험하다</span>
+        </div>
+      </a>
+      <a href="overseas.html" class="photo-card">
+        <div class="photo-card-img" style="background:linear-gradient(rgba(40,20,60,.55),rgba(40,20,60,.55)),linear-gradient(135deg,#3a2060,#7040c0)">
+          <span>청년, 해외취업에 도전하다</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="foot-logo">
+      <img src="logo2.png" alt="지구청년">
+    </div>
+    <div class="foot-info">
+      주소 : 03172 서울특별시 종로구 사직로8길 60&nbsp;&nbsp;전화번호 : 02-2100-2114(주) 7000,7100(야)&nbsp;&nbsp;팩스 : 02-2100-7999<br>
+      본 홈페이지의 모든 권리는 외교부에 귀속됩니다.&nbsp;&nbsp;Copyright ⓒ 2012 MOFA. All Rights Reserved.
+    </div>
+    <div class="foot-right">
+      <div class="foot-select-wrap">
+        <select class="foot-select" aria-label="관련사이트">
+          <option>관련사이트</option>
+          <option>외교부</option>
+          <option>워킹홀리데이인포센터</option>
+          <option>국제기구인사센터</option>
+        </select>
+        <button class="foot-select-btn">GO</button>
+      </div>
+      <div class="foot-mofa">
+        <img src="mologo.png" alt="외교부">
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>ⓒ Ministry of Foreign Affairs. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>해외진출 지원사업 - 지구청년</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans KR","Apple SD Gothic Neo","맑은 고딕",sans-serif;font-size:14px;color:#333;background:#fff}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer}
+
+#header{background:#333;height:58px}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 50px;display:flex;align-items:center;height:58px}
+.logo{display:flex;align-items:center;flex:none;margin-right:auto}
+.logo img{height:36px}
+#gnb{display:flex;align-items:stretch}
+.gnb-item a{display:flex;align-items:center;height:58px;padding:0 22px;color:rgba(255,255,255,.85);font-size:13px;font-weight:500;border-bottom:3px solid transparent;transition:color .15s}
+.gnb-item a:hover{color:#fff}
+.gnb-item.on a{color:#fff;font-weight:700;border-bottom-color:#3a9b8e}
+
+.page-banner{height:165px;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42)),linear-gradient(135deg,#2a3a4a 0%,#4a6a80 100%);display:flex;align-items:center;justify-content:center;text-align:center}
+.page-banner h1{font-size:32px;font-weight:700;color:#fff;letter-spacing:-0.02em}
+.banner-bar{display:block;width:1px;height:18px;background:rgba(255,255,255,.55);margin:10px auto 0}
+
+.sub-nav{background:#fff;border-bottom:1px solid #e0e0e0}
+.sub-nav-inner{max-width:940px;margin:0 auto;display:flex}
+.sub-tab{position:relative;padding:18px 50px;font-size:14px;color:#888;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:color .15s,border-color .15s;margin-bottom:-1px}
+.sub-tab+.sub-tab::before{content:'|';position:absolute;left:0;top:50%;transform:translateY(-50%);color:#ddd;font-size:11px}
+.sub-tab.active{color:#3a9b8e;border-bottom-color:#3a9b8e;font-weight:600}
+.sub-tab:hover{color:#3a9b8e}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+.content-area{max-width:940px;margin:0 auto;padding:36px 20px 70px}
+
+.search-wrap{background:#f9f9f9;border:1px solid #ebebeb;padding:18px 24px;margin-bottom:28px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.s-select{border:1px solid #d4d4d4;background:#fff;padding:0 28px 0 10px;font-size:13px;color:#444;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;cursor:pointer;outline:none;height:36px}
+.s-input{border:1px solid #d4d4d4;padding:0 12px;font-size:13px;height:36px;width:240px;outline:none}
+.s-input:focus{border-color:#3a9b8e}
+.s-btn{background:#3a9b8e;border:none;color:#fff;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+.s-btn svg{width:15px;height:15px;stroke:#fff;stroke-width:2.5;fill:none}
+
+.total-count{font-size:13px;color:#555;margin-bottom:16px}
+.total-count strong{color:#3a9b8e;font-weight:700}
+
+.map-wrap{border:1px solid #e8e8e8;padding:20px;margin-bottom:28px;background:#f5faff}
+.map-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:600px;margin:0 auto 10px}
+.map-region{padding:8px 14px;font-size:12px;color:#4a7aa0;border:1px solid #c8dff0;background:#fff;cursor:pointer;transition:background .15s}
+.map-region:hover{background:#e8f4ff;border-color:#3a9b8e;color:#3a9b8e}
+.map-note{font-size:11px;color:#888;text-align:center}
+
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+.country-card{border:1px solid #e8e8e8;padding:18px;display:flex;flex-direction:column;gap:8px}
+.country-name{font-size:15px;font-weight:700;color:#333}
+.biz-name{font-size:12px;color:#777;line-height:1.6;flex:1}
+.detail-btn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#3a9b8e;color:#fff;font-size:15px;align-self:flex-end;flex:none;transition:background .15s;border:none;cursor:pointer}
+.detail-btn:hover{background:#2e7a6e}
+
+.biz-section{display:flex;gap:28px;padding:30px 0;border-bottom:1px solid #eee}
+.biz-section:first-child{border-top:1px solid #eee}
+.biz-ph{flex:none;width:280px;height:180px;display:flex;align-items:center;justify-content:center}
+.biz-ph-1{background:linear-gradient(135deg,#1a4a38,#3a8a6a)}
+.biz-ph-2{background:linear-gradient(135deg,#2a5020,#5a9040)}
+.biz-ph-3{background:linear-gradient(135deg,#603010,#c07030)}
+.biz-ph-4{background:linear-gradient(135deg,#1a3a6a,#3a6ab0)}
+.biz-ph-5{background:linear-gradient(135deg,#1a5a5a,#3aaaa0)}
+.biz-ph-6{background:linear-gradient(135deg,#3a2060,#7040c0)}
+.biz-content{flex:1}
+.biz-title{font-size:16px;font-weight:700;color:#3a9b8e;margin-bottom:10px}
+.biz-desc{font-size:13px;color:#555;line-height:1.8;margin-bottom:16px}
+.biz-btns{display:flex;flex-wrap:wrap;gap:8px}
+.biz-btn{padding:6px 14px;font-size:12px;background:#fff;border:1px solid #3a9b8e;color:#3a9b8e;cursor:pointer;transition:all .15s}
+.biz-btn:hover{background:#3a9b8e;color:#fff}
+
+.pagination{display:flex;justify-content:center;align-items:center;gap:2px;margin-top:28px}
+.pg-btn{min-width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid #e0e0e0;font-size:13px;color:#666;background:#fff;cursor:pointer;transition:all .15s}
+.pg-btn.active,.pg-btn:hover{background:#3a9b8e;border-color:#3a9b8e;color:#fff}
+.pg-arr{min-width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid #e0e0e0;font-size:12px;color:#888;background:#fff;cursor:pointer}
+.pg-arr:hover{background:#f5f5f5}
+
+#footer{background:#444;padding:20px 0 0}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 50px;display:flex;align-items:center}
+.foot-logo{flex:none;margin-right:30px}
+.foot-logo img{height:38px}
+.foot-info{flex:1;font-size:11px;color:#aaa;line-height:1.9}
+.foot-right{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:10px;margin-left:20px}
+.foot-select-wrap{display:flex}
+.foot-select{min-width:110px;padding:6px 22px 6px 10px;background:#555;border:1px solid #666;color:#ccc;font-size:12px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center;cursor:pointer;outline:none}
+.foot-select-btn{background:#555;border:1px solid #666;border-left:none;color:#ccc;font-size:12px;padding:6px 10px;cursor:pointer}
+.foot-mofa img{height:36px;width:auto;opacity:.85}
+.footer-bottom{margin-top:16px;background:#3a3a3a;padding:8px 50px}
+.footer-bottom p{font-size:11px;color:#888}
+</style>
+</head>
+<body>
+<header id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="logo2.png" alt="지구청년"></a>
+    <nav id="gnb">
+      <div class="gnb-item"><a href="intro.html">지구청년 소개</a></div>
+      <div class="gnb-item on"><a href="overseas.html">해외진출 지원사업</a></div>
+      <div class="gnb-item"><a href="activity.html">활동공유</a></div>
+      <div class="gnb-item"><a href="recruit.html">모집공고</a></div>
+      <div class="gnb-item"><a href="related.html">관련사이트</a></div>
+    </nav>
+  </div>
+</header>
+
+<div class="page-banner">
+  <div>
+    <h1>해외진출 지원사업</h1>
+    <span class="banner-bar"></span>
+  </div>
+</div>
+
+<div class="sub-nav">
+  <div class="sub-nav-inner">
+    <button class="sub-tab active" onclick="switchTab(0,this)">국가별</button>
+    <button class="sub-tab" onclick="switchTab(1,this)">사업별</button>
+  </div>
+</div>
+
+<main>
+  <div class="content-area">
+
+    <!-- 국가별 탭 -->
+    <div class="tab-panel active" id="panel-0">
+      <div class="search-wrap">
+        <select class="s-select">
+          <option>전체</option>
+          <option>아시아</option>
+          <option>유럽</option>
+          <option>아프리카</option>
+          <option>아메리카</option>
+          <option>오세아니아</option>
+        </select>
+        <select class="s-select">
+          <option>대륙 전체</option>
+          <option>동아시아</option>
+          <option>동남아시아</option>
+          <option>남아시아</option>
+          <option>중동</option>
+          <option>서유럽</option>
+          <option>동유럽</option>
+          <option>북아메리카</option>
+          <option>중남미</option>
+          <option>아프리카</option>
+        </select>
+        <input class="s-input" type="text" placeholder="국가명을 입력하세요">
+        <button class="s-btn" aria-label="검색">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+        </button>
+      </div>
+
+      <div class="map-wrap">
+        <div class="map-grid">
+          <span class="map-region">동아시아</span>
+          <span class="map-region">동남아시아</span>
+          <span class="map-region">남아시아</span>
+          <span class="map-region">중앙아시아</span>
+          <span class="map-region">중동</span>
+          <span class="map-region">서유럽</span>
+          <span class="map-region">동유럽</span>
+          <span class="map-region">북아프리카</span>
+          <span class="map-region">사하라이남 아프리카</span>
+          <span class="map-region">북아메리카</span>
+          <span class="map-region">중남미</span>
+          <span class="map-region">오세아니아</span>
+        </div>
+        <p class="map-note">지역을 클릭하여 해당 국가의 사업을 조회하세요</p>
+      </div>
+
+      <p class="total-count">총 <strong>607</strong>건</p>
+
+      <div class="card-grid">
+        <div class="country-card">
+          <div class="country-name">미국</div>
+          <div class="biz-name">청년, 해외취업에 도전하다<br>재외공관 위임직원업체 채용</div>
+          <button class="detail-btn">→</button>
+        </div>
+        <div class="country-card">
+          <div class="country-name">일본</div>
+          <div class="biz-name">청년, 해외 생활을 경험하다<br>워킹홀리데이</div>
+          <button class="detail-btn">→</button>
+        </div>
+        <div class="country-card">
+          <div class="country-name">베트남</div>
+          <div class="biz-name">청년, 행복을 나누다<br>월드프렌즈 KOICA 봉사단</div>
+          <button class="detail-btn">→</button>
+        </div>
+        <div class="country-card">
+          <div class="country-name">독일</div>
+          <div class="biz-name">청년, 해외 생활을 경험하다<br>워킹홀리데이</div>
+          <button class="detail-btn">→</button>
+        </div>
+        <div class="country-card">
+          <div class="country-name">캄보디아</div>
+          <div class="biz-name">청년, 행복을 나누다<br>월드프렌즈 NGO 봉사단</div>
+          <button class="detail-btn">→</button>
+        </div>
+        <div class="country-card">
+          <div class="country-name">케냐</div>
+          <div class="biz-name">청년, 국제 기구에 나아가다<br>UNV 유엔 자원봉사단</div>
+          <button class="detail-btn">→</button>
+        </div>
+        <div class="country-card">
+          <div class="country-name">프랑스</div>
+          <div class="biz-name">청년, 국제 기구에 나아가다<br>JPO 국제기구 초급전문가</div>
+          <button class="detail-btn">→</button>
+        </div>
+        <div class="country-card">
+          <div class="country-name">인도네시아</div>
+          <div class="biz-name">청년, 해외 인턴이 되다<br>KOICA 해외사무소 봉사파견</div>
+          <button class="detail-btn">→</button>
+        </div>
+        <div class="country-card">
+          <div class="country-name">브라질</div>
+          <div class="biz-name">청년, 해외 인턴이 되다<br>중남미 지역기구 인턴파견사업</div>
+          <button class="detail-btn">→</button>
+        </div>
+      </div>
+
+      <div class="pagination">
+        <button class="pg-arr">≪</button>
+        <button class="pg-arr">＜</button>
+        <button class="pg-btn active">1</button>
+        <button class="pg-btn">2</button>
+        <button class="pg-btn">3</button>
+        <button class="pg-btn">4</button>
+        <button class="pg-btn">5</button>
+        <button class="pg-arr">＞</button>
+        <button class="pg-arr">≫</button>
+      </div>
+    </div>
+
+    <!-- 사업별 탭 -->
+    <div class="tab-panel" id="panel-1">
+      <div class="biz-section">
+        <div class="biz-ph biz-ph-1"></div>
+        <div class="biz-content">
+          <div class="biz-title">청년, 국제 기구에 나아가다</div>
+          <p class="biz-desc">유엔을 포함한 각종 국제기구 진출을 지원합니다. 유엔자원봉사단(UNV), 국제기구 초급전문가(JPO), 다자협력전문가(KMCD), 차세대아프리카전문가(YPA) 등 다양한 국제기구 진출 프로그램을 제공합니다.</p>
+          <div class="biz-btns">
+            <button class="biz-btn">UNV 유엔 자원봉사단</button>
+            <button class="biz-btn">JPO 국제기구 초급전문가</button>
+            <button class="biz-btn">KMCD 다자협력전문가</button>
+            <button class="biz-btn">YPA 차세대아프리카전문가</button>
+          </div>
+        </div>
+      </div>
+      <div class="biz-section">
+        <div class="biz-ph biz-ph-2"></div>
+        <div class="biz-content">
+          <div class="biz-title">청년, 행복을 나누다</div>
+          <p class="biz-desc">개발도상국의 발전을 위해 봉사 활동에 참여하는 월드프렌즈 봉사단 사업입니다. KOICA 일반봉사단, NGO봉사단, 청년봉사단, IT봉사단, 과학기술지원단 등 다양한 분야에서 활동할 수 있습니다.</p>
+          <div class="biz-btns">
+            <button class="biz-btn">월드프렌즈 KOICA 일반봉사단</button>
+            <button class="biz-btn">월드프렌즈 NGO 봉사단</button>
+            <button class="biz-btn">월드프렌즈 청년 봉사단</button>
+            <button class="biz-btn">월드프렌즈 IT 봉사단</button>
+            <button class="biz-btn">월드프렌즈 과학기술지원단</button>
+          </div>
+        </div>
+      </div>
+      <div class="biz-section">
+        <div class="biz-ph biz-ph-3"></div>
+        <div class="biz-content">
+          <div class="biz-title">청년, 해외 인턴이 되다</div>
+          <p class="biz-desc">해외 기관 및 국제기구에서 실무 경험을 쌓을 수 있는 인턴십 프로그램입니다. 중남미 지역기구 인턴, 해·시 관련 국제기구 인턴, KOICA, KF 글로벌 챌린지 등 다양한 기회가 제공됩니다.</p>
+          <div class="biz-btns">
+            <button class="biz-btn">중남미 지역기구 인턴파견사업</button>
+            <button class="biz-btn">해·시 관련 국제기구 인턴파견사업</button>
+            <button class="biz-btn">KOICA 해외사무소 봉사파견사업</button>
+            <button class="biz-btn">ODA 사업수행기관 봉사파견사업</button>
+            <button class="biz-btn">KF 글로벌 챌린지</button>
+            <button class="biz-btn">재외동포재단 한상기업 청년채용 안내</button>
+          </div>
+        </div>
+      </div>
+      <div class="biz-section">
+        <div class="biz-ph biz-ph-4"></div>
+        <div class="biz-content">
+          <div class="biz-title">청년, 공공외교관이 되다</div>
+          <p class="biz-desc">재외공관에서 근무하며 공공외교 업무를 경험할 수 있는 현장실습 프로그램입니다. 대한민국의 외교 현장에서 생생한 경험을 쌓고 글로벌 역량을 키울 수 있습니다.</p>
+          <div class="biz-btns">
+            <button class="biz-btn">재외공관 공공외교 현장실습원</button>
+          </div>
+        </div>
+      </div>
+      <div class="biz-section">
+        <div class="biz-ph biz-ph-5"></div>
+        <div class="biz-content">
+          <div class="biz-title">청년, 해외 생활을 경험하다</div>
+          <p class="biz-desc">해외에서 일하면서 그 나라의 언어와 문화를 체험할 수 있는 워킹홀리데이 프로그램입니다. 외교부 워킹홀리데이 인포센터를 통해 다양한 정보를 제공합니다.</p>
+          <div class="biz-btns">
+            <button class="biz-btn">워킹홀리데이</button>
+          </div>
+        </div>
+      </div>
+      <div class="biz-section">
+        <div class="biz-ph biz-ph-6"></div>
+        <div class="biz-content">
+          <div class="biz-title">청년, 해외취업에 도전하다</div>
+          <p class="biz-desc">재외공관 및 해외취업지원업체를 통해 해외에서 취업할 수 있는 기회를 제공합니다. 다양한 국가의 공관에서 행정직원으로 근무하거나 현지 기업에 취업할 수 있습니다.</p>
+          <div class="biz-btns">
+            <button class="biz-btn">재외공관 위임직원업체</button>
+            <button class="biz-btn">KOICA 코디네이터</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="foot-logo"><img src="logo2.png" alt="지구청년"></div>
+    <div class="foot-info">
+      주소 : 03172 서울특별시 종로구 사직로8길 60&nbsp;&nbsp;전화번호 : 02-2100-2114(주) 7000,7100(야)&nbsp;&nbsp;팩스 : 02-2100-7999<br>
+      본 홈페이지의 모든 권리는 외교부에 귀속됩니다.&nbsp;&nbsp;Copyright ⓒ 2012 MOFA. All Rights Reserved.
+    </div>
+    <div class="foot-right">
+      <div class="foot-select-wrap">
+        <select class="foot-select"><option>관련사이트</option><option>외교부</option><option>워킹홀리데이인포센터</option></select>
+        <button class="foot-select-btn">GO</button>
+      </div>
+      <div class="foot-mofa"><img src="mologo.png" alt="외교부"></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>ⓒ Ministry of Foreign Affairs. All rights reserved.</p></div>
+</footer>
+
+<script>
+function switchTab(idx, btn) {
+  document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-' + idx).classList.add('active');
+}
+</script>
+</body>
+</html>

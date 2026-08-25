@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>활동공유 - 지구청년</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans KR","Apple SD Gothic Neo","맑은 고딕",sans-serif;font-size:14px;color:#333;background:#fff}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer}
+
+#header{background:#333;height:58px}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 50px;display:flex;align-items:center;height:58px}
+.logo{display:flex;align-items:center;flex:none;margin-right:auto}
+.logo img{height:36px}
+#gnb{display:flex;align-items:stretch}
+.gnb-item a{display:flex;align-items:center;height:58px;padding:0 22px;color:rgba(255,255,255,.85);font-size:13px;font-weight:500;border-bottom:3px solid transparent;transition:color .15s}
+.gnb-item a:hover{color:#fff}
+.gnb-item.on a{color:#fff;font-weight:700;border-bottom-color:#3a9b8e}
+
+.page-banner{height:165px;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42)),linear-gradient(135deg,#2a4840 0%,#4a8870 100%);display:flex;align-items:center;justify-content:center;text-align:center}
+.page-banner h1{font-size:32px;font-weight:700;color:#fff;letter-spacing:-0.02em}
+.banner-bar{display:block;width:1px;height:18px;background:rgba(255,255,255,.55);margin:10px auto 0}
+
+.sub-nav{background:#fff;border-bottom:1px solid #e0e0e0}
+.sub-nav-inner{max-width:940px;margin:0 auto;display:flex}
+.sub-tab{position:relative;padding:18px 40px;font-size:14px;color:#888;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:color .15s,border-color .15s;margin-bottom:-1px}
+.sub-tab+.sub-tab::before{content:'|';position:absolute;left:0;top:50%;transform:translateY(-50%);color:#ddd;font-size:11px}
+.sub-tab.active{color:#3a9b8e;border-bottom-color:#3a9b8e;font-weight:600}
+.sub-tab:hover{color:#3a9b8e}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+.content-area{max-width:940px;margin:0 auto;padding:36px 20px 70px}
+
+.search-wrap{background:#f9f9f9;border:1px solid #ebebeb;padding:18px 24px;margin-bottom:28px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.s-select{border:1px solid #d4d4d4;background:#fff;padding:0 28px 0 10px;font-size:13px;color:#444;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;cursor:pointer;outline:none;height:36px}
+.s-input{border:1px solid #d4d4d4;padding:0 12px;font-size:13px;height:36px;width:240px;outline:none}
+.s-input:focus{border-color:#3a9b8e}
+.s-btn{background:#3a9b8e;border:none;color:#fff;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+.s-btn svg{width:15px;height:15px;stroke:#fff;stroke-width:2.5;fill:none}
+
+.total-count{font-size:13px;color:#555;margin-bottom:16px}
+.total-count strong{color:#3a9b8e;font-weight:700}
+
+/* 숫자로 카드 */
+.num-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+.num-card{border:1px solid #e8e8e8;overflow:hidden;cursor:pointer;transition:box-shadow .15s}
+.num-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.num-thumb{height:160px;display:flex;align-items:center;justify-content:center}
+.num-thumb-1{background:linear-gradient(135deg,#5a20a0,#8040e0)}
+.num-thumb-2{background:linear-gradient(135deg,#2040a0,#4060d0)}
+.num-thumb-3{background:linear-gradient(135deg,#1a6090,#3090c0)}
+.num-thumb-4{background:linear-gradient(135deg,#206030,#40a060)}
+.num-thumb-5{background:linear-gradient(135deg,#904020,#c06040)}
+.num-thumb-6{background:linear-gradient(135deg,#502080,#8050b0)}
+.num-thumb-7{background:linear-gradient(135deg,#1a5080,#3080b0)}
+.num-thumb span{color:#fff;font-size:13px;font-weight:700;padding:10px;text-align:center;line-height:1.5}
+.num-info{padding:12px}
+.num-title{font-size:13px;color:#333;font-weight:600;margin-bottom:4px;line-height:1.5;word-break:keep-all}
+.num-view{font-size:12px;color:#888}
+
+/* 홍보영상 카드 */
+.vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+.vid-card{border:1px solid #e8e8e8;padding:18px;display:flex;flex-direction:column;gap:10px}
+.vid-title{font-size:13px;color:#333;font-weight:600;line-height:1.6;flex:1;word-break:keep-all}
+.vid-btn{display:inline-flex;align-items:center;gap:6px;color:#3a9b8e;font-size:13px;font-weight:600;border:none;background:none;cursor:pointer;padding:0;align-self:flex-start}
+.vid-btn:hover{text-decoration:underline}
+
+/* 체험수기 테이블 */
+.board-table{width:100%;border-collapse:collapse;margin-bottom:28px}
+.board-table th{padding:11px 14px;font-size:13px;font-weight:600;color:#555;text-align:center;border-top:2px solid #333;border-bottom:1px solid #ddd;background:#f9f9f9}
+.board-table td{padding:12px 14px;font-size:13px;color:#444;border-bottom:1px solid #eee;text-align:center;vertical-align:middle}
+.board-table td.title-cell{text-align:left;cursor:pointer}
+.board-table td.title-cell:hover{color:#3a9b8e}
+.board-table td.biz-cell{color:#3a9b8e}
+.board-table tbody tr:hover{background:#f9fffe}
+
+.pagination{display:flex;justify-content:center;align-items:center;gap:2px;margin-top:28px}
+.pg-btn{min-width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid #e0e0e0;font-size:13px;color:#666;background:#fff;cursor:pointer;transition:all .15s}
+.pg-btn.active,.pg-btn:hover{background:#3a9b8e;border-color:#3a9b8e;color:#fff}
+.pg-arr{min-width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid #e0e0e0;font-size:12px;color:#888;background:#fff;cursor:pointer}
+.pg-arr:hover{background:#f5f5f5}
+
+#footer{background:#444;padding:20px 0 0}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 50px;display:flex;align-items:center}
+.foot-logo{flex:none;margin-right:30px}
+.foot-logo img{height:38px}
+.foot-info{flex:1;font-size:11px;color:#aaa;line-height:1.9}
+.foot-right{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:10px;margin-left:20px}
+.foot-select-wrap{display:flex}
+.foot-select{min-width:110px;padding:6px 22px 6px 10px;background:#555;border:1px solid #666;color:#ccc;font-size:12px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center;cursor:pointer;outline:none}
+.foot-select-btn{background:#555;border:1px solid #666;border-left:none;color:#ccc;font-size:12px;padding:6px 10px;cursor:pointer}
+.foot-mofa img{height:36px;width:auto;opacity:.85}
+.footer-bottom{margin-top:16px;background:#3a3a3a;padding:8px 50px}
+.footer-bottom p{font-size:11px;color:#888}
+</style>
+</head>
+<body>
+<header id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="logo2.png" alt="지구청년"></a>
+    <nav id="gnb">
+      <div class="gnb-item"><a href="intro.html">지구청년 소개</a></div>
+      <div class="gnb-item"><a href="overseas.html">해외진출 지원사업</a></div>
+      <div class="gnb-item on"><a href="activity.html">활동공유</a></div>
+      <div class="gnb-item"><a href="recruit.html">모집공고</a></div>
+      <div class="gnb-item"><a href="related.html">관련사이트</a></div>
+    </nav>
+  </div>
+</header>
+
+<div class="page-banner" id="main-banner">
+  <div>
+    <h1 id="banner-title">숫자로 보는 지구청년</h1>
+    <span class="banner-bar"></span>
+  </div>
+</div>
+
+<div class="sub-nav">
+  <div class="sub-nav-inner">
+    <button class="sub-tab active" onclick="switchTab(0,this,'숫자로 보는 지구청년')">숫자로 보는 지구청년</button>
+    <button class="sub-tab" onclick="switchTab(1,this,'홍보영상')">홍보영상</button>
+    <button class="sub-tab" onclick="switchTab(2,this,'활동공유')">체험수기</button>
+  </div>
+</div>
+
+<main>
+  <div class="content-area">
+
+    <!-- 숫자로 보는 지구청년 -->
+    <div class="tab-panel active" id="panel-0">
+      <div class="search-wrap">
+        <select class="s-select"><option>제목</option><option>내용</option></select>
+        <input class="s-input" type="text" placeholder="검색어를 입력하세요">
+        <button class="s-btn" aria-label="검색">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+        </button>
+      </div>
+      <p class="total-count">총 <strong>7</strong>건</p>
+      <div class="num-grid">
+        <div class="num-card">
+          <div class="num-thumb num-thumb-1"><span>숫자로 알아보는<br>지구청년 7탄</span></div>
+          <div class="num-info">
+            <div class="num-title">숫자로 알아보는 지구청년 7탄 &lt;재외공관 공공외교 현장실…&gt;</div>
+            <div class="num-view">조회수 2376</div>
+          </div>
+        </div>
+        <div class="num-card">
+          <div class="num-thumb num-thumb-2"><span>숫자로 알아보는<br>지구청년 6탄</span></div>
+          <div class="num-info">
+            <div class="num-title">숫자로 알아보는 지구청년 6탄 &lt;다자협력전문가 KMCD편&gt;</div>
+            <div class="num-view">조회수 2282</div>
+          </div>
+        </div>
+        <div class="num-card">
+          <div class="num-thumb num-thumb-3"><span>숫자로 알아보는<br>지구청년 5탄</span></div>
+          <div class="num-info">
+            <div class="num-title">숫자로 알아보는 지구청년 5탄 &lt;월드프렌즈 KOICA 봉사…&gt;</div>
+            <div class="num-view">조회수 2485</div>
+          </div>
+        </div>
+        <div class="num-card">
+          <div class="num-thumb num-thumb-4"><span>숫자로 알아보는<br>지구청년 4탄</span></div>
+          <div class="num-info">
+            <div class="num-title">숫자로 알아보는 지구청년 4탄 &lt;중남미 지역기구 인턴편&gt;</div>
+            <div class="num-view">조회수 2186</div>
+          </div>
+        </div>
+        <div class="num-card">
+          <div class="num-thumb num-thumb-5"><span>숫자로 알아보는<br>지구청년 3탄</span></div>
+          <div class="num-info">
+            <div class="num-title">숫자로 알아보는 지구청년 3탄 &lt;KF 글로벌 챌린지편&gt;</div>
+            <div class="num-view">조회수 2401</div>
+          </div>
+        </div>
+        <div class="num-card">
+          <div class="num-thumb num-thumb-6"><span>숫자로 알아보는<br>지구청년 2탄</span></div>
+          <div class="num-info">
+            <div class="num-title">숫자로 알아보는 지구청년 2탄 &lt;JPO편&gt;</div>
+            <div class="num-view">조회수 2274</div>
+          </div>
+        </div>
+        <div class="num-card">
+          <div class="num-thumb num-thumb-7"><span>숫자로 알아보는<br>지구청년 1탄</span></div>
+          <div class="num-info">
+            <div class="num-title">숫자로 알아보는 지구청년 1탄 &lt;해·시기 국제기구 인턴편&gt;</div>
+            <div class="num-view">조회수 2153</div>
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <button class="pg-arr">≪</button>
+        <button class="pg-arr">＜</button>
+        <button class="pg-btn active">1</button>
+        <button class="pg-arr">＞</button>
+        <button class="pg-arr">≫</button>
+      </div>
+    </div>
+
+    <!-- 홍보영상 -->
+    <div class="tab-panel" id="panel-1">
+      <div class="search-wrap">
+        <select class="s-select"><option>제목</option><option>내용</option></select>
+        <input class="s-input" type="text" placeholder="검색어를 입력하세요">
+        <button class="s-btn" aria-label="검색">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+        </button>
+      </div>
+      <p class="total-count">총 <strong>21</strong>건</p>
+      <div class="vid-grid">
+        <div class="vid-card">
+          <div class="vid-title">[라이브 모파] 2019년 찾아가는 지구청년 설명회</div>
+          <button class="vid-btn">영상보기 →</button>
+        </div>
+        <div class="vid-card">
+          <div class="vid-title">[찾아가는 지구청년 설명회] 코이카(KOICA) 해외봉사, 인턴파견 편</div>
+          <button class="vid-btn">영상보기 →</button>
+        </div>
+        <div class="vid-card">
+          <div class="vid-title">[찾아가는 지구청년 설명회] 국제기구 초급전문가(JPO), 유엔봉사단(UNV) 편</div>
+          <button class="vid-btn">영상보기 →</button>
+        </div>
+        <div class="vid-card">
+          <div class="vid-title">[찾아가는 지구청년 설명회] 워킹홀리데이 편</div>
+          <button class="vid-btn">영상보기 →</button>
+        </div>
+        <div class="vid-card">
+          <div class="vid-title">[찾아가는 지구청년 설명회] KF 글로벌 챌린저 편</div>
+          <button class="vid-btn">영상보기 →</button>
+        </div>
+        <div class="vid-card">
+          <div class="vid-title">[찾아가는 지구청년 설명회] 중남미 지역기구 인턴파견 편</div>
+          <button class="vid-btn">영상보기 →</button>
+        </div>
+        <div class="vid-card">
+          <div class="vid-title">[찾아가는 지구청년 설명회] 재외공관 현장실습원 편</div>
+          <button class="vid-btn">영상보기 →</button>
+        </div>
+        <div class="vid-card">
+          <div class="vid-title">국제기구 진출 설명회 그룹세션 (ICC, WHO, UNESCAP)</div>
+          <button class="vid-btn">영상보기 →</button>
+        </div>
+        <div class="vid-card">
+          <div class="vid-title">국제기구 진출 설명회 UN 시스템 채용, MICE 인재양성 사례</div>
+          <button class="vid-btn">영상보기 →</button>
+        </div>
+        <div class="vid-card">
+          <div class="vid-title">국제기구 진출 설명회 그룹세션 (GCF, FAO, UNDP)</div>
+          <button class="vid-btn">영상보기 →</button>
+        </div>
+      </div>
+      <div class="pagination">
+        <button class="pg-arr">≪</button>
+        <button class="pg-arr">＜</button>
+        <button class="pg-btn active">1</button>
+        <button class="pg-btn">2</button>
+        <button class="pg-btn">3</button>
+        <button class="pg-arr">＞</button>
+        <button class="pg-arr">≫</button>
+      </div>
+    </div>
+
+    <!-- 체험수기 -->
+    <div class="tab-panel" id="panel-2">
+      <div class="search-wrap">
+        <select class="s-select" style="min-width:170px"><option>사업별 체험수기 보기</option><option>워킹홀리데이</option><option>해외 인턴파견 지원</option><option>국제기구 진출 지원</option></select>
+        <select class="s-select"><option>제목</option><option>내용</option></select>
+        <input class="s-input" type="text" placeholder="검색어를 입력하세요">
+        <button class="s-btn" aria-label="검색">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+        </button>
+      </div>
+      <p class="total-count">총 <strong>76</strong>건</p>
+      <table class="board-table">
+        <thead>
+          <tr>
+            <th style="width:60px">번호</th>
+            <th style="width:130px">사업</th>
+            <th>제목</th>
+            <th style="width:100px">작성일</th>
+            <th style="width:70px">조회수</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>76</td><td class="biz-cell">워킹홀리데이</td><td class="title-cell">지구청년 멘토 워킹홀리데이 더블린사람들</td><td>2021-03-30</td><td>3361</td></tr>
+          <tr><td>75</td><td class="biz-cell">해외 인턴파견 지원</td><td class="title-cell">[해·시기구 인턴] Be Proactive with Initiative!</td><td>2020-03-31</td><td>4093</td></tr>
+          <tr><td>74</td><td class="biz-cell">국제기구 진출 지원(JPO)</td><td class="title-cell">[JPO, KMCD] 유엔아동기금 선생님: 국제기구를 무대로!</td><td>2020-02-26</td><td>4065</td></tr>
+          <tr><td>73</td><td class="biz-cell">해외 인턴파견 지원</td><td class="title-cell">[현상 인턴] 다른 어떤 선택지보다 밀도 있는 6개월을 만들어준 홍콩 인턴생활</td><td>2020-02-05</td><td>5988</td></tr>
+          <tr><td>72</td><td class="biz-cell">해외 인턴파견 지원</td><td class="title-cell">[현상 인턴] 사랑하는 나의 불확실성</td><td>2020-02-05</td><td>4414</td></tr>
+          <tr><td>71</td><td class="biz-cell">해외 인턴파견 지원</td><td class="title-cell">[현상 인턴] 세계를 향한 밑거름</td><td>2020-02-05</td><td>3688</td></tr>
+          <tr><td>70</td><td class="biz-cell">해외 인턴파견 지원</td><td class="title-cell">[현상 인턴] '열린 세상'을 선물해준 현상 인턴 프로그램</td><td>2020-02-05</td><td>3822</td></tr>
+          <tr><td>69</td><td class="biz-cell">해외 인턴파견 지원</td><td class="title-cell">[현상 인턴] 대리 진급 전, 다시 인턴 신분으로 re-start.</td><td>2020-02-05</td><td>6634</td></tr>
+          <tr><td>68</td><td class="biz-cell">해외 인턴파견 지원</td><td class="title-cell">[현상 인턴] 특별한 해외 인턴의 기회, 누구보다 주도적이고 자발하게 살아 날 것</td><td>2020-02-05</td><td>3735</td></tr>
+          <tr><td>67</td><td class="biz-cell">해외 인턴파견 지원</td><td class="title-cell">[현상 인턴] 베트남, 지역전문가의 꿈의 시작</td><td>2020-02-05</td><td>3840</td></tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <button class="pg-arr">≪</button>
+        <button class="pg-arr">＜</button>
+        <button class="pg-btn active">1</button>
+        <button class="pg-btn">2</button>
+        <button class="pg-btn">3</button>
+        <button class="pg-btn">4</button>
+        <button class="pg-btn">5</button>
+        <button class="pg-arr">＞</button>
+        <button class="pg-arr">≫</button>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="foot-logo"><img src="logo2.png" alt="지구청년"></div>
+    <div class="foot-info">
+      주소 : 03172 서울특별시 종로구 사직로8길 60&nbsp;&nbsp;전화번호 : 02-2100-2114(주) 7000,7100(야)&nbsp;&nbsp;팩스 : 02-2100-7999<br>
+      본 홈페이지의 모든 권리는 외교부에 귀속됩니다.&nbsp;&nbsp;Copyright ⓒ 2012 MOFA. All Rights Reserved.
+    </div>
+    <div class="foot-right">
+      <div class="foot-select-wrap">
+        <select class="foot-select"><option>관련사이트</option><option>외교부</option><option>워킹홀리데이인포센터</option></select>
+        <button class="foot-select-btn">GO</button>
+      </div>
+      <div class="foot-mofa"><img src="mologo.png" alt="외교부"></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>ⓒ Ministry of Foreign Affairs. All rights reserved.</p></div>
+</footer>
+
+<script>
+function switchTab(idx, btn, title) {
+  document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-' + idx).classList.add('active');
+  document.getElementById('banner-title').textContent = title;
+}
+</script>
+</body>
+</html>
