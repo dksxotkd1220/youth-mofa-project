@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>지구청년</title>
+<style>
+/* ============================================================
+   BASE — 공통 스타일 (모든 페이지에서 동일)
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans KR","Apple SD Gothic Neo","맑은 고딕","Malgun Gothic",sans-serif;font-size:14px;color:#333;background:#fff;}
+a{text-decoration:none;color:inherit}
+ul,ol{list-style:none}
+img{max-width:100%;vertical-align:middle}
+button{font-family:inherit;cursor:pointer}
+.skip{position:absolute;left:-9999px;top:0;background:#000;color:#fff;padding:8px 14px;font-size:13px;z-index:9999}
+.skip:focus{left:0}
+
+/* HEADER */
+#header{background:#333;position:sticky;top:0;z-index:200;}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 30px;display:flex;align-items:center;height:60px;}
+.logo{display:flex;align-items:center;gap:10px;margin-right:60px;flex:none;}
+.logo-img{width:36px;height:36px;flex:none;display:flex;align-items:center;justify-content:center;}
+.logo-img svg{width:36px;height:36px}
+.logo-name{font-size:20px;font-weight:900;color:#fff;letter-spacing:-0.03em;white-space:nowrap;}
+#gnb{display:flex;align-items:stretch;flex:1}
+.gnb-item{position:relative;flex:none;}
+.gnb-item>a{display:flex;align-items:center;height:60px;padding:0 22px;font-size:15px;font-weight:700;color:rgba(255,255,255,.88);white-space:nowrap;transition:color .15s,background .15s;}
+.gnb-item>a:hover,.gnb-item.on>a{color:#fff;background:rgba(255,255,255,.1);}
+
+/* PAGE BANNER */
+.page-banner{height:160px;position:relative;overflow:hidden;display:flex;align-items:flex-end;background-size:cover;background-position:center;}
+.page-banner-inner{max-width:1200px;margin:0 auto;padding:0 30px 24px;width:100%;text-align:center;}
+.page-banner h1{font-size:28px;font-weight:900;color:#fff;letter-spacing:-0.03em;display:inline-block;padding:0 20px;}
+.banner-line{width:1px;height:14px;background:rgba(255,255,255,.6);margin:8px auto 0;display:block;}
+
+/* SUB-TABS */
+.sub-tabs{border-bottom:2px solid #e0e0e0;background:#fff;}
+.sub-tabs-inner{max-width:1200px;margin:0 auto;padding:0 30px;display:flex;}
+.sub-tab{padding:16px 30px 14px;font-size:14px;font-weight:700;color:#666;border-bottom:3px solid transparent;margin-bottom:-2px;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;transition:color .15s;}
+.sub-tab.active{color:#3a9b8e;border-bottom-color:#3a9b8e;}
+
+/* CONTENT */
+.content-area{max-width:1200px;margin:0 auto;padding:30px 30px 60px;}
+
+/* SEARCH BAR */
+.search-bar{background:#f5f5f5;border:1px solid #e0e0e0;padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.search-select{padding:8px 28px 8px 12px;border:1px solid #ccc;background:#fff;font-size:13px;color:#333;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;cursor:pointer;outline:none;min-width:150px;height:36px;}
+.search-input{flex:1;height:36px;border:1px solid #ccc;padding:0 12px;font-size:13px;outline:none;max-width:400px;}
+.search-input:focus{border-color:#3a9b8e}
+.search-btn{width:36px;height:36px;background:#3a9b8e;border:none;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.search-btn svg{width:16px;height:16px;stroke:#fff;stroke-width:2;fill:none}
+
+/* TABLE */
+.count-text{font-size:13px;color:#333;margin-bottom:14px;}
+.count-text strong{color:#3a9b8e}
+.board-table{width:100%;border-collapse:collapse}
+.board-table thead th{background:#f0f0f0;border-top:2px solid #333;border-bottom:1px solid #ccc;padding:10px 16px;font-size:13px;font-weight:700;text-align:center;color:#333;}
+.board-table tbody td{padding:12px 16px;border-bottom:1px solid #e8e8e8;font-size:13px;color:#333;text-align:center;vertical-align:middle;}
+.board-table tbody tr:hover td{background:#f8fefe}
+.board-table .td-title{text-align:left}
+.board-table .td-title a:hover{color:#3a9b8e;text-decoration:underline}
+.status-open{display:inline-block;background:#3a9b8e;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:2px;}
+.status-closed{display:inline-block;background:#999;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:2px;}
+
+/* PAGINATION */
+.pagination{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:30px;}
+.page-btn{width:30px;height:30px;display:flex;align-items:center;justify-content:center;border:1px solid #ddd;background:#fff;font-size:13px;color:#666;cursor:pointer;transition:background .15s,border-color .15s,color .15s;}
+.page-btn:hover,.page-btn.active{background:#3a9b8e;border-color:#3a9b8e;color:#fff;}
+
+/* VIDEO GRID */
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.video-card{border:1px solid #e0e0e0;padding:16px;cursor:pointer;transition:border-color .15s,box-shadow .15s;}
+.video-card:hover{border-color:#3a9b8e;box-shadow:0 2px 8px rgba(58,155,142,.1)}
+.video-card .thumb{background:#c0c0d8;height:140px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;}
+.video-card .title{font-size:13px;font-weight:700;color:#333;line-height:1.5;margin-bottom:14px;}
+.video-link{display:inline-flex;align-items:center;gap:8px;color:#3a9b8e;font-size:13px;font-weight:700;}
+.video-play-btn{width:24px;height:24px;border-radius:50%;background:#3a9b8e;display:flex;align-items:center;justify-content:center;flex:none;}
+.video-play-btn svg{width:10px;height:10px;fill:#fff;margin-left:1px}
+
+/* IMG GRID */
+.img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.img-card{border:1px solid #e0e0e0;overflow:hidden;cursor:pointer;transition:border-color .15s;}
+.img-card:hover{border-color:#3a9b8e}
+.img-card .thumb{height:160px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.img-card .thumb img{width:100%;height:100%;object-fit:cover}
+.img-card .card-body{padding:12px 14px}
+.img-card .card-title{font-size:13px;color:#333;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.img-card .card-views{font-size:12px;color:#888;margin-top:6px}
+
+/* RELATED SITES */
+.rel-section{margin-bottom:40px}
+.rel-section h2{font-size:18px;font-weight:900;color:#333;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #e0e0e0;}
+.rel-logos{display:flex;flex-wrap:wrap;gap:10px;}
+.rel-logo-item{width:160px;text-align:center;cursor:pointer;}
+.rel-logo-box{border:1px solid #ddd;height:70px;display:flex;align-items:center;justify-content:center;padding:10px;background:#fff;transition:border-color .15s;}
+.rel-logo-item:hover .rel-logo-box{border-color:#3a9b8e}
+.rel-logo-name{font-size:12px;color:#555;margin-top:6px;line-height:1.4}
+
+/* WORLD MAP AREA */
+.world-map{background:#dde8f0;height:300px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:14px;color:#668;border:1px solid #c0d0dc;}
+
+/* BIZ TABLE */
+.biz-section{margin-bottom:48px}
+.biz-section h2{font-size:18px;font-weight:900;color:#333;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #3a9b8e;}
+.biz-list{display:flex;flex-direction:column;gap:0;}
+.biz-item{display:flex;align-items:stretch;border:1px solid #e0e0e0;border-top:none;}
+.biz-item:first-child{border-top:1px solid #e0e0e0;}
+.biz-item-name{background:#3a9b8e;color:#fff;font-size:13px;font-weight:700;padding:14px 20px;width:220px;flex:none;display:flex;align-items:center;justify-content:center;text-align:center;}
+.biz-item-desc{flex:1;padding:12px 20px;font-size:13px;color:#444;line-height:1.6;display:flex;align-items:center;}
+.biz-item-link{flex:none;padding:0 16px;display:flex;align-items:center;}
+.biz-link-btn{display:inline-flex;align-items:center;gap:6px;background:#3a9b8e;color:#fff;font-size:12px;font-weight:700;padding:8px 14px;border:none;cursor:pointer;border-radius:2px;}
+.biz-link-btn:hover{background:#2d8a7e}
+
+/* FOOTER */
+#footer{background:#333;padding:22px 0;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 30px;display:flex;align-items:center;gap:30px;}
+.foot-logo{display:flex;align-items:center;gap:8px;flex:none;}
+.foot-logo svg{width:32px;height:32px}
+.foot-logo-name{font-size:17px;font-weight:900;color:#fff;letter-spacing:-0.03em;}
+.foot-info{flex:1;font-size:12px;color:rgba(255,255,255,.6);line-height:1.8;}
+.foot-right{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+.foot-select-wrap{display:flex;align-items:center;}
+.foot-select{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8);font-size:12px;padding:7px 30px 7px 12px;border-radius:2px 0 0 2px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23aaa' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;cursor:pointer;outline:none;min-width:130px;}
+.foot-select-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-left:none;color:#fff;font-size:12px;padding:7px 12px;border-radius:0 2px 2px 0;cursor:pointer;}
+.foot-mofa{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:11px;}
+.mofa-emblem{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;}
+</style>
+</head>
+<body>
+<!-- 이 파일은 공통 구조 참조용 템플릿입니다. 실제 페이지 파일들을 참고하세요. -->
+</body>
+</html>
