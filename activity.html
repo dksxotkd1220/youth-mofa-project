@@ -84,6 +84,51 @@ button{font-family:inherit;cursor:pointer}
 .pg-arr{min-width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid #e0e0e0;font-size:12px;color:#888;background:#fff;cursor:pointer}
 .pg-arr:hover{background:#f5f5f5}
 
+/* 자유게시판 */
+.fb-view{display:none}.fb-view.active{display:block}
+.fb-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.fb-write-btn{background:#3a9b8e;color:#fff;border:none;padding:9px 22px;font-size:13px;font-weight:600;cursor:pointer}
+.fb-write-btn:hover{background:#2d7a6f}
+.fb-form-row{margin-bottom:14px}
+.fb-label{font-size:13px;font-weight:600;color:#333;display:block;margin-bottom:6px}
+.fb-input{border:1px solid #d4d4d4;padding:9px 12px;font-size:14px;outline:none;width:100%;font-family:inherit}
+.fb-input:focus{border-color:#3a9b8e}
+.fb-half{width:240px!important}
+.fb-toolbar{border:1px solid #d4d4d4;border-bottom:none;background:#f7f7f7;padding:6px 10px;display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.fb-tool-btn{border:1px solid transparent;background:none;padding:4px 9px;font-size:13px;cursor:pointer;border-radius:3px;color:#333;font-family:inherit}
+.fb-tool-btn:hover{background:#e4e4e4;border-color:#ccc}
+.fb-editor{min-height:280px;border:1px solid #d4d4d4;padding:16px;outline:none;font-size:14px;line-height:1.85;font-family:inherit;overflow-y:auto}
+.fb-editor img{max-width:100%}
+.fb-editor:empty::before{content:'내용을 입력하세요';color:#bbb;pointer-events:none}
+.fb-submit-row{display:flex;justify-content:center;gap:8px;margin-top:24px;padding-top:20px;border-top:1px solid #eee}
+.fb-submit{background:#3a9b8e;color:#fff;border:none;padding:10px 36px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+.fb-cancel{background:#fff;color:#555;border:1px solid #bbb;padding:10px 36px;font-size:14px;cursor:pointer;font-family:inherit}
+.fb-back-btn{background:#fff;border:1px solid #ccc;padding:7px 16px;font-size:13px;color:#555;cursor:pointer;margin-bottom:20px;font-family:inherit}
+.fb-det-head{border-top:2px solid #222;border-bottom:1px solid #ddd;padding:16px 0 14px}
+.fb-det-title{font-size:18px;font-weight:700;color:#111;margin-bottom:10px;line-height:1.4}
+.fb-det-meta{font-size:12px;color:#888;display:flex;gap:18px}
+.fb-det-body{padding:28px 0;min-height:180px;border-bottom:1px solid #eee;font-size:14px;line-height:1.9}
+.fb-det-body img{max-width:100%;display:block;margin:8px 0}
+.fb-det-bottom{display:flex;justify-content:center;margin-top:20px;padding-bottom:10px;border-bottom:1px solid #eee}
+.fb-cmt-section{margin-top:28px}
+.fb-cmt-head{font-size:14px;font-weight:700;color:#333;padding-bottom:12px;border-bottom:1px solid #ddd;margin-bottom:0}
+.fb-cmt-item{padding:14px 0;border-bottom:1px solid #f0f0f0}
+.fb-cmt-author{font-size:13px;font-weight:700;color:#222;margin-bottom:4px}
+.fb-cmt-text{font-size:13px;color:#444;line-height:1.7;margin-bottom:6px;white-space:pre-wrap;word-break:break-all}
+.fb-cmt-foot{display:flex;align-items:center;gap:14px;font-size:11px;color:#aaa}
+.fb-reply-toggle{background:none;border:none;font-size:11px;color:#3a9b8e;cursor:pointer;padding:0;font-family:inherit}
+.fb-replies{margin-left:20px;border-left:2px solid #eee;padding-left:14px;margin-top:8px}
+.fb-reply-item{padding:10px 0;border-bottom:1px solid #f8f8f8}
+.fb-reply-item:last-child{border-bottom:none}
+.fb-reply-form{display:none;margin-top:10px;background:#f5faf9;border:1px solid #d8eeeb;padding:12px}
+.fb-cmt-form{margin-top:20px;background:#f9f9f9;border:1px solid #eee;padding:16px}
+.fb-cmt-nick{border:1px solid #d4d4d4;padding:8px 10px;font-size:13px;width:160px;outline:none;font-family:inherit;margin-bottom:8px}
+.fb-cmt-nick:focus{border-color:#3a9b8e}
+.fb-cmt-textarea{width:100%;border:1px solid #d4d4d4;padding:10px 12px;font-size:13px;resize:vertical;min-height:70px;outline:none;font-family:inherit;display:block}
+.fb-cmt-textarea:focus{border-color:#3a9b8e}
+.fb-cmt-submit{background:#3a9b8e;color:#fff;border:none;padding:8px 20px;font-size:13px;cursor:pointer;font-family:inherit;margin-top:8px}
+.fb-empty-row td{text-align:center;padding:50px 0;color:#aaa;font-size:14px}
+
 #footer{background:#444;padding:20px 0 0}
 .footer-inner{max-width:1200px;margin:0 auto;padding:0 50px;display:flex;align-items:center}
 .foot-logo{flex:none;margin-right:30px}
@@ -124,6 +169,7 @@ button{font-family:inherit;cursor:pointer}
     <button class="sub-tab active" onclick="switchTab(0,this,'숫자로 보는 지구청년')">숫자로 보는 지구청년</button>
     <button class="sub-tab" onclick="switchTab(1,this,'홍보영상')">홍보영상</button>
     <button class="sub-tab" onclick="switchTab(2,this,'활동공유')">체험수기</button>
+    <button class="sub-tab" onclick="switchTab(3,this,'자유게시판')">자유게시판</button>
   </div>
 </div>
 
@@ -310,6 +356,84 @@ button{font-family:inherit;cursor:pointer}
       </div>
     </div>
 
+    <!-- 자유게시판 -->
+    <div class="tab-panel" id="panel-3">
+
+      <!-- 목록 -->
+      <div class="fb-view active" id="fb-list">
+        <div class="fb-topbar">
+          <p class="total-count">총 <strong id="fb-total">0</strong>건</p>
+          <button class="fb-write-btn" onclick="fbShowWrite()">글쓰기</button>
+        </div>
+        <div class="search-wrap">
+          <select class="s-select" id="fb-search-type"><option value="title">제목</option><option value="content">내용</option></select>
+          <input class="s-input" type="text" id="fb-search-kw" placeholder="검색어를 입력하세요" onkeydown="if(event.key==='Enter')fbSearch()">
+          <button class="s-btn" onclick="fbSearch()" aria-label="검색"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg></button>
+        </div>
+        <table class="board-table">
+          <thead><tr><th style="width:60px">번호</th><th>제목</th><th style="width:90px">작성자</th><th style="width:100px">작성일</th><th style="width:70px">조회수</th></tr></thead>
+          <tbody id="fb-tbody"></tbody>
+        </table>
+        <div class="pagination" id="fb-paging"></div>
+      </div>
+
+      <!-- 글쓰기 -->
+      <div class="fb-view" id="fb-write">
+        <h2 style="font-size:16px;font-weight:700;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid #333">글쓰기</h2>
+        <div class="fb-form-row">
+          <label class="fb-label">제목 <span style="color:#e44">*</span></label>
+          <input class="fb-input" type="text" id="fb-title" placeholder="제목을 입력하세요">
+        </div>
+        <div class="fb-form-row">
+          <label class="fb-label">작성자</label>
+          <input class="fb-input fb-half" type="text" id="fb-author" placeholder="닉네임 (미입력 시 익명)">
+        </div>
+        <div class="fb-form-row">
+          <label class="fb-label">내용 <span style="color:#e44">*</span></label>
+          <div class="fb-toolbar">
+            <button class="fb-tool-btn" onmousedown="event.preventDefault();document.execCommand('bold')"><b>B</b></button>
+            <button class="fb-tool-btn" onmousedown="event.preventDefault();document.execCommand('italic')"><i>I</i></button>
+            <button class="fb-tool-btn" onmousedown="event.preventDefault();document.execCommand('underline')"><u>U</u></button>
+            <span style="width:1px;background:#ddd;margin:0 4px;align-self:stretch"></span>
+            <button class="fb-tool-btn" onclick="fbInsertImage()">🖼 이미지</button>
+            <input type="file" id="fb-img-input" accept="image/*" style="display:none" onchange="fbReadImage(this)">
+          </div>
+          <div class="fb-editor" id="fb-editor" contenteditable="true"></div>
+        </div>
+        <div class="fb-submit-row">
+          <button class="fb-cancel" onclick="fbShowList()">취소</button>
+          <button class="fb-submit" onclick="fbSubmitPost()">등록하기</button>
+        </div>
+      </div>
+
+      <!-- 상세 -->
+      <div class="fb-view" id="fb-detail">
+        <button class="fb-back-btn" onclick="fbShowList()">← 목록</button>
+        <div class="fb-det-head">
+          <div class="fb-det-title" id="fb-det-title"></div>
+          <div class="fb-det-meta">
+            <span id="fb-det-author"></span>
+            <span id="fb-det-date"></span>
+            <span>조회 <span id="fb-det-views"></span></span>
+          </div>
+        </div>
+        <div class="fb-det-body" id="fb-det-body"></div>
+        <div class="fb-det-bottom">
+          <button class="fb-back-btn" onclick="fbShowList()">← 목록으로</button>
+        </div>
+        <div class="fb-cmt-section">
+          <div class="fb-cmt-head" id="fb-cmt-head">댓글 0</div>
+          <div id="fb-cmt-list"></div>
+          <div class="fb-cmt-form">
+            <input class="fb-cmt-nick" type="text" id="fb-cmt-nick" placeholder="닉네임 (미입력 시 익명)">
+            <textarea class="fb-cmt-textarea" id="fb-cmt-text" placeholder="댓글을 입력하세요"></textarea>
+            <div style="text-align:right"><button class="fb-cmt-submit" onclick="fbAddComment()">댓글 등록</button></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </main>
 
@@ -338,7 +462,204 @@ function switchTab(idx, btn, title) {
   btn.classList.add('active');
   document.getElementById('panel-' + idx).classList.add('active');
   document.getElementById('banner-title').textContent = title;
+  if (idx === 3) fbRenderList();
 }
+
+/* ── 자유게시판 ── */
+var FB_KEY = 'jiyugame_posts';
+var fbCurrentPost = null;
+var fbPage = 1;
+var FB_PER = 10;
+
+function fbGetPosts() {
+  try { return JSON.parse(localStorage.getItem(FB_KEY)) || []; } catch(e) { return []; }
+}
+function fbSavePosts(p) {
+  try { localStorage.setItem(FB_KEY, JSON.stringify(p)); } catch(e) {}
+}
+
+function fbShowList() {
+  document.getElementById('fb-list').classList.add('active');
+  document.getElementById('fb-write').classList.remove('active');
+  document.getElementById('fb-detail').classList.remove('active');
+  fbRenderList();
+}
+function fbShowWrite() {
+  document.getElementById('fb-list').classList.remove('active');
+  document.getElementById('fb-write').classList.add('active');
+  document.getElementById('fb-detail').classList.remove('active');
+  document.getElementById('fb-title').value = '';
+  document.getElementById('fb-author').value = '';
+  document.getElementById('fb-editor').innerHTML = '';
+  document.getElementById('fb-editor').focus();
+}
+function fbShowDetail(id) {
+  var posts = fbGetPosts();
+  var post = posts.find(function(p){ return p.id === id; });
+  if (!post) return;
+  post.views = (post.views || 0) + 1;
+  fbSavePosts(posts);
+  fbCurrentPost = post;
+  document.getElementById('fb-list').classList.remove('active');
+  document.getElementById('fb-write').classList.remove('active');
+  document.getElementById('fb-detail').classList.add('active');
+  document.getElementById('fb-det-title').textContent = post.title;
+  document.getElementById('fb-det-author').textContent = '작성자: ' + post.author;
+  document.getElementById('fb-det-date').textContent = post.date;
+  document.getElementById('fb-det-views').textContent = post.views;
+  document.getElementById('fb-det-body').innerHTML = post.content;
+  document.getElementById('fb-cmt-nick').value = '';
+  document.getElementById('fb-cmt-text').value = '';
+  fbRenderComments(post);
+}
+
+function fbRenderList() {
+  var kw = (document.getElementById('fb-search-kw') || {value:''}).value.trim();
+  var type = (document.getElementById('fb-search-type') || {value:'title'}).value;
+  var all = fbGetPosts();
+  if (kw) {
+    all = all.filter(function(p) {
+      return type === 'title' ? p.title.indexOf(kw) > -1 : p.content.replace(/<[^>]+>/g,'').indexOf(kw) > -1;
+    });
+  }
+  var total = all.length;
+  document.getElementById('fb-total').textContent = total;
+  var rev = all.slice().reverse();
+  var start = (fbPage - 1) * FB_PER;
+  var items = rev.slice(start, start + FB_PER);
+  var tbody = document.getElementById('fb-tbody');
+  if (!items.length) {
+    tbody.innerHTML = '<tr class="fb-empty-row"><td colspan="5">등록된 게시물이 없습니다.</td></tr>';
+  } else {
+    tbody.innerHTML = items.map(function(p, i) {
+      var num = total - start - i;
+      var cmtBadge = p.comments && p.comments.length ? ' <span style="color:#3a9b8e;font-size:11px">[' + p.comments.length + ']</span>' : '';
+      return '<tr onclick="fbShowDetail(' + p.id + ')" style="cursor:pointer">' +
+        '<td>' + num + '</td>' +
+        '<td class="title-cell">' + fbEsc(p.title) + cmtBadge + '</td>' +
+        '<td>' + fbEsc(p.author) + '</td>' +
+        '<td>' + p.date + '</td>' +
+        '<td>' + (p.views || 0) + '</td></tr>';
+    }).join('');
+  }
+  var totalPages = Math.max(1, Math.ceil(total / FB_PER));
+  if (fbPage > totalPages) fbPage = totalPages;
+  var pg = document.getElementById('fb-paging');
+  var h = '<button class="pg-arr" onclick="fbGo(1)">≪</button><button class="pg-arr" onclick="fbGo(' + Math.max(1,fbPage-1) + ')">＜</button>';
+  for (var i = 1; i <= totalPages; i++) h += '<button class="pg-btn' + (i===fbPage?' active':'') + '" onclick="fbGo(' + i + ')">' + i + '</button>';
+  h += '<button class="pg-arr" onclick="fbGo(' + Math.min(totalPages,fbPage+1) + ')">＞</button><button class="pg-arr" onclick="fbGo(' + totalPages + ')">≫</button>';
+  pg.innerHTML = h;
+}
+function fbGo(p) { fbPage = p; fbRenderList(); }
+function fbSearch() { fbPage = 1; fbRenderList(); }
+
+function fbSubmitPost() {
+  var title = document.getElementById('fb-title').value.trim();
+  var author = document.getElementById('fb-author').value.trim() || '익명';
+  var content = document.getElementById('fb-editor').innerHTML.trim();
+  if (!title) { alert('제목을 입력하세요.'); return; }
+  if (!content || content === '<br>') { alert('내용을 입력하세요.'); return; }
+  var posts = fbGetPosts();
+  var now = new Date();
+  var date = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate());
+  posts.push({ id: now.getTime(), title: title, author: author, content: content, date: date, views: 0, comments: [] });
+  fbSavePosts(posts);
+  fbPage = 1;
+  fbShowList();
+}
+
+function fbAddComment() {
+  var text = document.getElementById('fb-cmt-text').value.trim();
+  var nick = document.getElementById('fb-cmt-nick').value.trim() || '익명';
+  if (!text) { alert('댓글을 입력하세요.'); return; }
+  var posts = fbGetPosts();
+  var post = posts.find(function(p){ return p.id === fbCurrentPost.id; });
+  if (!post) return;
+  var now = new Date();
+  var date = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate()) + ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes());
+  if (!post.comments) post.comments = [];
+  post.comments.push({ id: now.getTime(), author: nick, text: text, date: date, replies: [] });
+  fbSavePosts(posts);
+  fbCurrentPost = post;
+  document.getElementById('fb-cmt-text').value = '';
+  document.getElementById('fb-cmt-nick').value = '';
+  fbRenderComments(post);
+}
+
+function fbAddReply(cid) {
+  var textEl = document.getElementById('fb-rt-' + cid);
+  var nickEl = document.getElementById('fb-rn-' + cid);
+  if (!textEl) return;
+  var text = textEl.value.trim();
+  var nick = nickEl.value.trim() || '익명';
+  if (!text) { alert('답글을 입력하세요.'); return; }
+  var posts = fbGetPosts();
+  var post = posts.find(function(p){ return p.id === fbCurrentPost.id; });
+  var cmt = post && post.comments.find(function(c){ return c.id === cid; });
+  if (!cmt) return;
+  var now = new Date();
+  var date = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate()) + ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes());
+  if (!cmt.replies) cmt.replies = [];
+  cmt.replies.push({ id: now.getTime(), author: nick, text: text, date: date });
+  fbSavePosts(posts);
+  fbCurrentPost = post;
+  fbRenderComments(post);
+}
+
+function fbToggleReply(cid) {
+  var el = document.getElementById('fb-rf-' + cid);
+  if (el) el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+function fbRenderComments(post) {
+  var cmts = post.comments || [];
+  document.getElementById('fb-cmt-head').textContent = '댓글 ' + cmts.length;
+  if (!cmts.length) {
+    document.getElementById('fb-cmt-list').innerHTML = '<div style="text-align:center;padding:20px 0;color:#aaa;font-size:13px">아직 댓글이 없습니다.</div>';
+    return;
+  }
+  document.getElementById('fb-cmt-list').innerHTML = cmts.map(function(c) {
+    var repsHtml = '';
+    if (c.replies && c.replies.length) {
+      repsHtml = '<div class="fb-replies">' + c.replies.map(function(r) {
+        return '<div class="fb-reply-item">' +
+          '<div class="fb-cmt-author">↳ ' + fbEsc(r.author) + '</div>' +
+          '<div class="fb-cmt-text">' + fbEsc(r.text) + '</div>' +
+          '<div class="fb-cmt-foot"><span>' + r.date + '</span></div></div>';
+      }).join('') + '</div>';
+    }
+    return '<div class="fb-cmt-item">' +
+      '<div class="fb-cmt-author">' + fbEsc(c.author) + '</div>' +
+      '<div class="fb-cmt-text">' + fbEsc(c.text) + '</div>' +
+      '<div class="fb-cmt-foot"><span>' + c.date + '</span>' +
+      '<button class="fb-reply-toggle" onclick="fbToggleReply(' + c.id + ')">답글 달기</button></div>' +
+      repsHtml +
+      '<div class="fb-reply-form" id="fb-rf-' + c.id + '">' +
+        '<input class="fb-cmt-nick" type="text" id="fb-rn-' + c.id + '" placeholder="닉네임 (미입력 시 익명)">' +
+        '<textarea class="fb-cmt-textarea" id="fb-rt-' + c.id + '" placeholder="답글을 입력하세요" style="min-height:60px"></textarea>' +
+        '<div style="text-align:right"><button class="fb-cmt-submit" onclick="fbAddReply(' + c.id + ')">답글 등록</button></div>' +
+      '</div></div>';
+  }).join('');
+}
+
+function fbInsertImage() { document.getElementById('fb-img-input').click(); }
+function fbReadImage(input) {
+  var file = input.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { alert('이미지는 5MB 이하만 첨부 가능합니다.'); return; }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('fb-editor').focus();
+    document.execCommand('insertImage', false, e.target.result);
+  };
+  reader.readAsDataURL(file);
+  input.value = '';
+}
+
+function fbEsc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function pad(n) { return String(n).padStart(2,'0'); }
 </script>
 </body>
 </html>
