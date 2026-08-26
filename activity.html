@@ -128,6 +128,18 @@ button{font-family:inherit;cursor:pointer}
 .fb-cmt-textarea:focus{border-color:#3a9b8e}
 .fb-cmt-submit{background:#3a9b8e;color:#fff;border:none;padding:8px 20px;font-size:13px;cursor:pointer;font-family:inherit;margin-top:8px}
 .fb-empty-row td{text-align:center;padding:50px 0;color:#aaa;font-size:14px}
+.fb-cat-tabs{display:flex;gap:0;margin-bottom:18px;border-bottom:2px solid #e0e0e0}
+.fb-cat-tab{padding:9px 22px;font-size:13px;font-weight:500;color:#888;background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:inherit;transition:color .15s}
+.fb-cat-tab:hover{color:#3a9b8e}
+.fb-cat-tab.on{color:#3a9b8e;font-weight:700;border-bottom-color:#3a9b8e}
+.fb-cat-badge{display:inline-block;font-size:11px;background:#e8f5f3;color:#3a9b8e;border-radius:10px;padding:1px 7px;margin-left:4px}
+.fb-cat-label{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;margin-right:6px;vertical-align:middle}
+.fb-cat-경험후기{background:#fff3e0;color:#e67e22}
+.fb-cat-모임모집{background:#e8f5e9;color:#27ae60}
+.fb-cat-자유글{background:#e8f0fe;color:#3a6fd8}
+.fb-cat-질문답변{background:#fce4ec;color:#c0392b}
+.fb-cat-select{border:1px solid #d4d4d4;padding:9px 12px;font-size:14px;outline:none;width:200px;font-family:inherit;cursor:pointer}
+.fb-cat-select:focus{border-color:#3a9b8e}
 
 #footer{background:#444;padding:20px 0 0}
 .footer-inner{max-width:1200px;margin:0 auto;padding:0 50px;display:flex;align-items:center}
@@ -361,6 +373,13 @@ button{font-family:inherit;cursor:pointer}
 
       <!-- 목록 -->
       <div class="fb-view active" id="fb-list">
+        <div class="fb-cat-tabs">
+          <button class="fb-cat-tab on" onclick="fbSetCat('',this)">전체</button>
+          <button class="fb-cat-tab" onclick="fbSetCat('경험 후기',this)">경험 후기</button>
+          <button class="fb-cat-tab" onclick="fbSetCat('모임 모집',this)">모임 모집</button>
+          <button class="fb-cat-tab" onclick="fbSetCat('자유 글',this)">자유 글</button>
+          <button class="fb-cat-tab" onclick="fbSetCat('질문/답변',this)">질문/답변</button>
+        </div>
         <div class="fb-topbar">
           <p class="total-count">총 <strong id="fb-total">0</strong>건</p>
           <button class="fb-write-btn" onclick="fbShowWrite()">글쓰기</button>
@@ -371,7 +390,7 @@ button{font-family:inherit;cursor:pointer}
           <button class="s-btn" onclick="fbSearch()" aria-label="검색"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg></button>
         </div>
         <table class="board-table">
-          <thead><tr><th style="width:60px">번호</th><th>제목</th><th style="width:90px">작성자</th><th style="width:100px">작성일</th><th style="width:70px">조회수</th></tr></thead>
+          <thead><tr><th style="width:60px">번호</th><th>제목</th><th style="width:80px">작성자</th><th style="width:100px">작성일</th><th style="width:70px">조회수</th></tr></thead>
           <tbody id="fb-tbody"></tbody>
         </table>
         <div class="pagination" id="fb-paging"></div>
@@ -380,9 +399,21 @@ button{font-family:inherit;cursor:pointer}
       <!-- 글쓰기 -->
       <div class="fb-view" id="fb-write">
         <h2 style="font-size:16px;font-weight:700;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid #333">글쓰기</h2>
-        <div class="fb-form-row">
-          <label class="fb-label">제목 <span style="color:#e44">*</span></label>
-          <input class="fb-input" type="text" id="fb-title" placeholder="제목을 입력하세요">
+        <div class="fb-form-row" style="display:flex;gap:12px">
+          <div style="flex:none">
+            <label class="fb-label">분류 <span style="color:#e44">*</span></label>
+            <select class="fb-cat-select" id="fb-cat">
+              <option value="">분류 선택</option>
+              <option value="경험 후기">경험 후기</option>
+              <option value="모임 모집">모임 모집</option>
+              <option value="자유 글">자유 글</option>
+              <option value="질문/답변">질문/답변</option>
+            </select>
+          </div>
+          <div style="flex:1">
+            <label class="fb-label">제목 <span style="color:#e44">*</span></label>
+            <input class="fb-input" type="text" id="fb-title" placeholder="제목을 입력하세요">
+          </div>
         </div>
         <div class="fb-form-row">
           <label class="fb-label">작성자</label>
@@ -470,6 +501,16 @@ var FB_KEY = 'jiyugame_posts';
 var fbCurrentPost = null;
 var fbPage = 1;
 var FB_PER = 10;
+var fbCatFilter = '';
+var FB_CATS = {'경험 후기':'fb-cat-경험후기','모임 모집':'fb-cat-모임모집','자유 글':'fb-cat-자유글','질문/답변':'fb-cat-질문답변'};
+function fbCatClass(cat){ return FB_CATS[cat] || ''; }
+function fbSetCat(cat, btn) {
+  fbCatFilter = cat;
+  fbPage = 1;
+  document.querySelectorAll('.fb-cat-tab').forEach(function(t){ t.classList.remove('on'); });
+  btn.classList.add('on');
+  fbRenderList();
+}
 
 function fbGetPosts() {
   try { return JSON.parse(localStorage.getItem(FB_KEY)) || []; } catch(e) { return []; }
@@ -488,6 +529,7 @@ function fbShowWrite() {
   document.getElementById('fb-list').classList.remove('active');
   document.getElementById('fb-write').classList.add('active');
   document.getElementById('fb-detail').classList.remove('active');
+  document.getElementById('fb-cat').value = '';
   document.getElementById('fb-title').value = '';
   document.getElementById('fb-author').value = '';
   document.getElementById('fb-editor').innerHTML = '';
@@ -503,7 +545,7 @@ function fbShowDetail(id) {
   document.getElementById('fb-list').classList.remove('active');
   document.getElementById('fb-write').classList.remove('active');
   document.getElementById('fb-detail').classList.add('active');
-  document.getElementById('fb-det-title').textContent = post.title;
+  document.getElementById('fb-det-title').innerHTML = (post.cat ? '<span class="fb-cat-label ' + fbCatClass(post.cat) + '">' + fbEsc(post.cat) + '</span>' : '') + fbEsc(post.title);
   document.getElementById('fb-det-author').textContent = '작성자: ' + post.author;
   document.getElementById('fb-det-date').textContent = post.date;
   document.getElementById('fb-det-views').textContent = post.views;
@@ -517,6 +559,7 @@ function fbRenderList() {
   var kw = (document.getElementById('fb-search-kw') || {value:''}).value.trim();
   var type = (document.getElementById('fb-search-type') || {value:'title'}).value;
   var all = fbGetPosts();
+  if (fbCatFilter) all = all.filter(function(p){ return p.cat === fbCatFilter; });
   if (kw) {
     all = all.filter(function(p) {
       return type === 'title' ? p.title.indexOf(kw) > -1 : p.content.replace(/<[^>]+>/g,'').indexOf(kw) > -1;
@@ -534,9 +577,10 @@ function fbRenderList() {
     tbody.innerHTML = items.map(function(p, i) {
       var num = total - start - i;
       var cmtBadge = p.comments && p.comments.length ? ' <span style="color:#3a9b8e;font-size:11px">[' + p.comments.length + ']</span>' : '';
+      var catBadge = p.cat ? '<span class="fb-cat-label ' + fbCatClass(p.cat) + '">' + fbEsc(p.cat) + '</span>' : '';
       return '<tr onclick="fbShowDetail(' + p.id + ')" style="cursor:pointer">' +
         '<td>' + num + '</td>' +
-        '<td class="title-cell">' + fbEsc(p.title) + cmtBadge + '</td>' +
+        '<td class="title-cell">' + catBadge + fbEsc(p.title) + cmtBadge + '</td>' +
         '<td>' + fbEsc(p.author) + '</td>' +
         '<td>' + p.date + '</td>' +
         '<td>' + (p.views || 0) + '</td></tr>';
@@ -554,15 +598,17 @@ function fbGo(p) { fbPage = p; fbRenderList(); }
 function fbSearch() { fbPage = 1; fbRenderList(); }
 
 function fbSubmitPost() {
+  var cat = document.getElementById('fb-cat').value;
   var title = document.getElementById('fb-title').value.trim();
   var author = document.getElementById('fb-author').value.trim() || '익명';
   var content = document.getElementById('fb-editor').innerHTML.trim();
+  if (!cat) { alert('분류를 선택하세요.'); return; }
   if (!title) { alert('제목을 입력하세요.'); return; }
   if (!content || content === '<br>') { alert('내용을 입력하세요.'); return; }
   var posts = fbGetPosts();
   var now = new Date();
   var date = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate());
-  posts.push({ id: now.getTime(), title: title, author: author, content: content, date: date, views: 0, comments: [] });
+  posts.push({ id: now.getTime(), cat: cat, title: title, author: author, content: content, date: date, views: 0, comments: [] });
   fbSavePosts(posts);
   fbPage = 1;
   fbShowList();
