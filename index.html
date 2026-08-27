@@ -218,7 +218,7 @@ img,svg{display:block;max-width:100%}
 #common{background:linear-gradient(#fff,#f2f8ff)}.common-wrap{background:linear-gradient(110deg,#e8f4ff,#f2f9ff);border-radius:22px;padding:24px}.common-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}.common-head h2{font-size:20px}.common-head p{font-size:11px;color:#6e7886}.common-head a{margin-left:auto;font-size:11px;color:var(--blue);font-weight:900}.common-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.common-card{background:#fff;border:1px solid #dce8f6;border-radius:14px;padding:20px;min-height:118px;position:relative;overflow:hidden}.common-card h4{color:#1956b6;font-size:16px;margin-bottom:5px}.common-card p{font-size:11px;color:#667384;max-width:70%}.common-card .figure{position:absolute;right:12px;bottom:0;font-size:64px}
 
 /* FOOTER */
-#footer{background:#444;color:#fff;padding:26px 0}.footer-inner{display:grid;grid-template-columns:180px 1fr auto;gap:28px;align-items:center}.foot-logo{font-size:23px;font-weight:900}.foot-logo img{height:76px;width:auto}.foot-info{font-size:11px;line-height:1.8;color:rgba(255,255,255,.72)}.foot-right{display:flex;flex-direction:column;gap:10px;align-items:flex-end}.foot-select-wrap{display:flex}.foot-select{min-width:110px;padding:6px 22px 6px 10px;background:#555;border:1px solid #666;color:#ccc;font-size:14px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center;cursor:pointer;outline:none}.foot-select-btn{background:#555;border:1px solid #666;border-left:none;color:#ccc;font-size:14px;padding:6px 10px;cursor:pointer;font-family:inherit}.foot-mofa img{height:36px;width:auto;opacity:.85}
+#footer{background:#444;color:#fff;padding:40px 0 26px;min-height:210px;display:flex;align-items:flex-start}.footer-inner{display:grid;grid-template-columns:180px 1fr auto;gap:28px;align-items:flex-start;width:100%}.foot-logo{font-size:23px;font-weight:900}.foot-logo img{height:76px;width:auto}.foot-info{font-size:11px;line-height:1.8;color:rgba(255,255,255,.72)}.foot-right{display:flex;flex-direction:column;gap:10px;align-items:flex-end}.foot-select-wrap{display:flex}.foot-select{min-width:110px;padding:6px 22px 6px 10px;background:#555;border:1px solid #666;color:#ccc;font-size:14px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center;cursor:pointer;outline:none}.foot-select-btn{background:#555;border:1px solid #666;border-left:none;color:#ccc;font-size:14px;padding:6px 10px;cursor:pointer;font-family:inherit}.foot-mofa img{height:54px;width:auto;opacity:.85}
 
 @media(max-width:1100px){
   .social{display:none}.gnb-item>a{padding-left:10px;padding-right:10px;font-size:14px}.hero-copy h1{font-size:44px}.globe{width:450px;height:450px}.pp-title{font-size:38px}.pp-head{gap:28px}.pp-links{grid-template-columns:repeat(2,1fr)}.recruit-body{grid-template-columns:1fr}.recruit-banner{min-height:170px}.common-card p{max-width:100%;padding-right:70px}
@@ -344,9 +344,9 @@ img,svg{display:block;max-width:100%}
       <div class="pp-head-right">
         <p class="pp-desc">해외 일 경험부터 국제교류, 정책참여까지<br>외교부와 정부가 함께하는 다양한 청년사업을 한곳에서 만나보세요.</p>
         <div class="pp-stats-row">
-          <span class="pp-si"><svg class="pp-si-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M14.5 7V5.5L9.5 2.5V1a1 1 0 00-2 0v1.5L2.5 5.5V7l5-1.5V11L6 12v1.5L8 13l2 .5V12l-1.5-1V5.5z"/></svg>총 <strong>35</strong>개 청년사업</span>
+          <span class="pp-si"><svg class="pp-si-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M14.5 7V5.5L9.5 2.5V1a1 1 0 00-2 0v1.5L2.5 5.5V7l5-1.5V11L6 12v1.5L8 13l2 .5V12l-1.5-1V5.5z"/></svg>총 <strong data-count="35">0</strong>개 청년사업</span>
           <span class="pp-dot">·</span>
-          <span class="pp-si"><strong>3</strong>개 분야</span>
+          <span class="pp-si"><strong data-count="3">0</strong>개 분야</span>
           <span class="pp-dot">·</span>
           <span class="pp-si">다양한 관계기관 연결</span>
         </div>
@@ -581,7 +581,7 @@ img,svg{display:block;max-width:100%}
 <section class="section section-social-bg">
   <div class="inner">
     <div class="box-title">
-      <h3><img src="instalogo.png" alt="" style="height:46px;display:inline-block;vertical-align:middle;margin-right:12px"> 지구청년 인스타그램</h3>
+      <h3><img src="instalogo.png" alt="" style="height:46px;display:inline-block;vertical-align:middle;margin-right:12px"> 지구청년 SNS</h3>
       <a class="more" href="#">더보기 →</a>
     </div>
     <div class="sns-full-grid">
@@ -767,6 +767,35 @@ function actSetTab(btn, cat) {
     item.style.display = (!cat || item.dataset.cat === cat) ? 'flex' : 'none';
   });
 }
+
+// 숫자 카운팅 인터랙션
+(function(){
+  var targets = document.querySelectorAll('[data-count]');
+  if(!targets.length || !window.IntersectionObserver) return;
+  function animateCount(el) {
+    var end = parseInt(el.getAttribute('data-count'), 10);
+    var duration = 2000;
+    var start = null;
+    function easeOut(t){ return 1 - Math.pow(1 - t, 3); }
+    function step(ts) {
+      if(!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      el.textContent = Math.round(easeOut(progress) * end);
+      if(progress < 1) requestAnimationFrame(step);
+      else el.textContent = end;
+    }
+    requestAnimationFrame(step);
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if(e.isIntersecting) {
+        animateCount(e.target);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  targets.forEach(function(el){ io.observe(el); });
+})();
 
 // 청년사업 포털 탭 전환
 (function(){
