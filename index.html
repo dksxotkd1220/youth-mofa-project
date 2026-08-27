@@ -159,6 +159,11 @@ img,svg{display:block;max-width:100%}
 .insta:hover:after{background:rgba(0,0,0,.25)}
 .insta-icon{position:absolute;bottom:12px;right:12px;width:34px;height:34px;background:rgba(255,255,255,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;z-index:2;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
 .insta:hover .insta-icon{opacity:1;transform:translateY(0)}
+.insta-info{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:16px;z-index:3;opacity:0;transition:opacity .3s ease}
+.insta:hover .insta-info{opacity:1}
+.insta-title{font-size:14px;font-weight:700;color:#fff;line-height:1.4;text-shadow:0 1px 4px rgba(0,0,0,.5);word-break:keep-all}
+.insta-date{font-size:12px;color:rgba(255,255,255,.85);text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.insta-new{position:absolute;top:12px;left:12px;background:#ff3b3b;color:#fff;font-size:11px;font-weight:800;padding:3px 8px;border-radius:4px;letter-spacing:.04em;z-index:4}
 
 /* 청년 소통 게시판 */
 .section-comm{background:linear-gradient(135deg,#0d2654 0%,#1a3d7a 100%);padding:60px 0}
@@ -181,6 +186,7 @@ img,svg{display:block;max-width:100%}
 .comm-item-body{flex:1;min-width:0}
 .comm-item-top{display:flex;align-items:center;gap:8px;margin-bottom:5px}
 .comm-badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;flex-shrink:0;white-space:nowrap}
+.comm-new{font-size:11px;font-weight:800;color:#fff;background:#ff3b3b;padding:2px 7px;border-radius:4px;flex-shrink:0}
 .cb-활동후기{background:#fff3e0;color:#d4730a}
 .cb-친구모집{background:#e8f5e9;color:#27ae60}
 .cb-자유게시판{background:#e8f0fe;color:#3a6fd8}
@@ -555,10 +561,10 @@ img,svg{display:block;max-width:100%}
       <a class="more" href="#">더보기 →</a>
     </div>
     <div class="sns-full-grid">
-      <div class="insta"><div class="insta-img" style="background:url(insta1.png) center/cover no-repeat"></div><span class="insta-icon">↗</span></div>
-      <div class="insta"><div class="insta-img" style="background:url(insta2.png) center/cover no-repeat"></div><span class="insta-icon">↗</span></div>
-      <div class="insta"><div class="insta-img" style="background:url(insta3.png) center/cover no-repeat"></div><span class="insta-icon">↗</span></div>
-      <div class="insta"><div class="insta-img" style="background:url(insta4.png) center/cover no-repeat"></div><span class="insta-icon">↗</span></div>
+      <div class="insta"><div class="insta-img" style="background:url(insta1.png) center/cover no-repeat"></div><span class="insta-icon">↗</span><span class="insta-new">NEW</span><div class="insta-info"><span class="insta-title">재외공관 공공외교 현장실습원 활동 현장</span><span class="insta-date">2025.06.14</span></div></div>
+      <div class="insta"><div class="insta-img" style="background:url(insta2.png) center/cover no-repeat"></div><span class="insta-icon">↗</span><div class="insta-info"><span class="insta-title">외교부 2030청년자문단 제2차 전체회의 × International Youth Day</span><span class="insta-date">2025.08.12</span></div></div>
+      <div class="insta"><div class="insta-img" style="background:url(insta3.png) center/cover no-repeat"></div><span class="insta-icon">↗</span><div class="insta-info"><span class="insta-title">지구청년 글로벌 네트워킹 현장 스케치</span><span class="insta-date">2025.07.22</span></div></div>
+      <div class="insta"><div class="insta-img" style="background:url(insta4.png) center/cover no-repeat"></div><span class="insta-icon">↗</span><div class="insta-info"><span class="insta-title">제주포럼 청년스피커 참여 후기 & 현장스케치</span><span class="insta-date">2025.06.11</span></div></div>
     </div>
   </div>
 </section>
@@ -585,7 +591,7 @@ img,svg{display:block;max-width:100%}
           <a href="activity.html" class="comm-item" data-cat="활동후기">
             <img class="comm-thumb" src="insta1.png" alt="">
             <div class="comm-item-body">
-              <div class="comm-item-top"><span class="comm-badge cb-활동후기">활동후기</span><span class="comm-item-title">재외공관 인턴으로 근무하며 배운 점들</span></div>
+              <div class="comm-item-top"><span class="comm-new">NEW</span><span class="comm-badge cb-활동후기">활동후기</span><span class="comm-item-title">재외공관 인턴으로 근무하며 배운 점들</span></div>
               <div class="comm-item-meta"><span>지구평년</span><span>2025.05.15</span></div>
             </div>
             <div class="comm-item-stats"><span>♡ 34</span><span>💬 4</span></div>
