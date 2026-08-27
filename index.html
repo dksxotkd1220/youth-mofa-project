@@ -28,10 +28,10 @@ img,svg{display:block;max-width:100%}
 .menu-btn{display:none;border:0;background:none;font-size:26px}
 
 /* HERO */
-#hero{position:relative;overflow:hidden;max-height:580px}
-#hero .hero-slides{display:block;width:100%;position:relative;overflow:hidden;margin-top:-5.5%;margin-bottom:-3%}
-#hero .hero-slide{display:block;width:100%;height:auto;opacity:0;transition:opacity 1.6s ease}
-#hero .hero-slide:not(:first-child){position:absolute;inset:0;height:100%;object-fit:cover}
+#hero{position:relative;overflow:hidden}
+#hero .hero-slides{display:block;width:100%;position:relative;overflow:hidden;height:750px}
+#hero .hero-slide{display:block;width:100%;height:100%;object-fit:cover;object-position:center 72%;opacity:0;transition:opacity 1.6s ease}
+#hero .hero-slide:not(:first-child){position:absolute;inset:0}
 #hero .hero-slide.is-active{opacity:1}
 #hero:before{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.58) 0%,rgba(0,0,0,.45) 30%,rgba(0,0,0,.15) 55%,rgba(0,0,0,0) 75%);z-index:1}
 .hero-wrap{position:absolute;inset:0;display:flex;align-items:center;z-index:2}
