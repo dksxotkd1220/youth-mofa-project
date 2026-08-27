@@ -146,20 +146,52 @@ img,svg{display:block;max-width:100%}
 .section-recruit-bg:before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.5) 0%,rgba(255,255,255,1) 100%);pointer-events:none;z-index:1}
 .section-recruit-bg .inner{position:relative;z-index:2}
 
-/* SOCIAL BG */
-.section-social-bg{position:relative;background:url(mainback01.png) center/cover no-repeat;padding:72px 0}
-.section-social-bg:before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.92) 0%,rgba(255,255,255,.15) 40%,rgba(255,255,255,.15) 60%,rgba(255,255,255,.92) 100%);pointer-events:none}
+/* SNS FULL */
+.section-social-bg{position:relative;background:url(mainback01.png) center/cover no-repeat;padding:60px 0}
+.section-social-bg:before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.94) 0%,rgba(255,255,255,.82) 50%,rgba(255,255,255,.94) 100%);pointer-events:none}
 .section-social-bg .inner{position:relative;z-index:1}
-
-/* SOCIAL + BOARD */
-.social-board{display:grid;grid-template-columns:1fr 1fr;gap:28px}.box-title{display:flex;align-items:center;margin-bottom:14px}.box-title h3{font-size:24px}.box-title .more{margin-left:auto;color:var(--blue);font-size:15px;font-weight:900}.insta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.insta{aspect-ratio:1/1;border-radius:10px;position:relative;overflow:hidden;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.13),0 1px 4px rgba(0,0,0,.08);border:1.5px solid rgba(255,255,255,.7)}
+.box-title{display:flex;align-items:center;margin-bottom:16px}.box-title h3{font-size:22px;font-weight:800}.box-title .more{margin-left:auto;color:var(--blue);font-size:15px;font-weight:700}
+.sns-full-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.insta{aspect-ratio:1/1;border-radius:12px;position:relative;overflow:hidden;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.12);border:1.5px solid rgba(255,255,255,.7)}
 .insta-img{position:absolute;inset:0;background-size:cover!important;background-position:center!important;transition:transform .45s ease}
 .insta:hover .insta-img{transform:scale(1.07)}
-.insta:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .35s ease;z-index:1;pointer-events:none;border-radius:10px}
-.insta:hover:after{background:rgba(0,0,0,.28)}
+.insta:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .35s ease;z-index:1;pointer-events:none;border-radius:12px}
+.insta:hover:after{background:rgba(0,0,0,.25)}
 .insta-icon{position:absolute;bottom:12px;right:12px;width:34px;height:34px;background:rgba(255,255,255,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;z-index:2;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
-.insta:hover .insta-icon{opacity:1;transform:translateY(0)}.caption{font-size:15px;color:#5d6672;margin-top:8px}
-.board-tabs{display:flex;border-radius:999px;background:#eef1f5;padding:3px;width:max-content;margin-bottom:10px}.board-tabs span{padding:6px 28px;border-radius:999px;font-size:15px}.board-tabs .on{background:var(--blue);color:#fff;font-weight:900}.board-list li{display:grid;grid-template-columns:1fr 80px;gap:12px;padding:14px 0;border-bottom:1px solid #edf0f4;font-size:15px}.board-list .date{align-self:center;font-size:15px;color:#aaa}
+.insta:hover .insta-icon{opacity:1;transform:translateY(0)}
+
+/* 청년 소통 게시판 */
+.section-comm{background:linear-gradient(135deg,#0d2654 0%,#1a3d7a 100%);padding:60px 0}
+.comm-header{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.comm-title{font-size:22px;font-weight:900;color:#fff;flex:none;letter-spacing:-.02em}
+.comm-search{flex:1;position:relative;max-width:380px;margin:0 auto}
+.comm-search input{width:100%;border:none;border-radius:8px;padding:10px 44px 10px 16px;font-size:14px;outline:none;font-family:inherit}
+.comm-search-btn{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;line-height:1}
+.comm-view-all{font-size:14px;font-weight:700;color:#fff;border:1.5px solid rgba(255,255,255,.55);border-radius:8px;padding:9px 22px;white-space:nowrap;flex:none;text-decoration:none;transition:background .2s}
+.comm-view-all:hover{background:rgba(255,255,255,.1)}
+.comm-body{display:grid;grid-template-columns:1fr 220px;gap:20px;align-items:start}
+.comm-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.comm-tab{padding:7px 18px;border-radius:999px;font-size:13px;font-weight:600;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:rgba(255,255,255,.7);cursor:pointer;font-family:inherit;transition:all .15s}
+.comm-tab.on{background:#fff;color:#0d2654;border-color:#fff}
+.comm-tab:hover:not(.on){background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.55)}
+.comm-list{display:flex;flex-direction:column;gap:10px}
+.comm-item{background:#fff;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:transform .15s,box-shadow .15s;text-decoration:none}
+.comm-item:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.comm-thumb{width:64px;height:64px;border-radius:8px;object-fit:cover;flex-shrink:0;background:#e8eef8}
+.comm-item-body{flex:1;min-width:0}
+.comm-item-top{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.comm-badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;flex-shrink:0;white-space:nowrap}
+.cb-활동후기{background:#fff3e0;color:#d4730a}
+.cb-친구모집{background:#e8f5e9;color:#27ae60}
+.cb-자유게시판{background:#e8f0fe;color:#3a6fd8}
+.comm-item-title{font-size:14px;font-weight:700;color:#111;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.comm-item-meta{font-size:12px;color:#999;display:flex;gap:10px}
+.comm-item-stats{display:flex;align-items:center;gap:10px;font-size:12px;color:#bbb;flex-shrink:0;white-space:nowrap}
+.comm-tags-card{background:#fff;border-radius:14px;padding:22px 20px}
+.comm-tags-title{font-size:15px;font-weight:800;color:#0d2654;margin-bottom:16px;text-align:center}
+.comm-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.comm-tag{font-size:13px;color:#1a3d7a;background:#eef2fb;border-radius:20px;padding:6px 14px;cursor:pointer;transition:background .15s}
+.comm-tag:hover{background:#d4e0f8}
 
 /* COMMON PROGRAM */
 #common{background:linear-gradient(#fff,#f2f8ff)}.common-wrap{background:linear-gradient(110deg,#e8f4ff,#f2f9ff);border-radius:22px;padding:24px}.common-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}.common-head h2{font-size:20px}.common-head p{font-size:11px;color:#6e7886}.common-head a{margin-left:auto;font-size:11px;color:var(--blue);font-weight:900}.common-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.common-card{background:#fff;border:1px solid #dce8f6;border-radius:14px;padding:20px;min-height:118px;position:relative;overflow:hidden}.common-card h4{color:#1956b6;font-size:16px;margin-bottom:5px}.common-card p{font-size:11px;color:#667384;max-width:70%}.common-card .figure{position:absolute;right:12px;bottom:0;font-size:64px}
@@ -517,9 +549,88 @@ img,svg{display:block;max-width:100%}
 </section>
 
 <section class="section section-social-bg">
-  <div class="inner social-board">
-    <div><div class="box-title"><h3><img src="instalogo.png" alt="" style="height:22px;display:inline-block;vertical-align:middle;margin-right:6px"> 지구청년 SNS</h3><a class="more" href="#">더보기 →</a></div><div class="insta-grid"><div class="insta"><div class="insta-img" style="background:url(insta1.png) center/cover no-repeat"></div><span class="insta-icon">↗</span></div><div class="insta"><div class="insta-img" style="background:url(insta2.png) center/cover no-repeat"></div><span class="insta-icon">↗</span></div></div></div>
-    <div><div class="box-title"><h3>지구청년 활동공유</h3><a class="more" href="#">더보기 →</a></div><div class="board-tabs"><span class="on">전체</span><span>체험수기</span><span>자유후기</span></div><ul class="board-list"><li><strong>지구청년 카드뉴스 🌎 글로벌 시민의 꿈, 함께 키워요!</strong><span class="date">2025.06.14</span></li><li><strong>제주포럼 청년스피커 참여 후기 & 현장스케치</strong><span class="date">2025.06.11</span></li><li><strong>클린프로젝트 참가자 인터뷰 3탄 공개!</strong><span class="date">2025.06.05</span></li><li><strong>제주 Y 포럼 프로그램 공개 예정!</strong><span class="date">2025.06.02</span></li><li><strong>2025년 재외공관 공공외교 현장실습원 활동 결과 공유</strong><span class="date">2025.05.28</span></li></ul></div>
+  <div class="inner">
+    <div class="box-title">
+      <h3><img src="instalogo.png" alt="" style="height:22px;display:inline-block;vertical-align:middle;margin-right:6px"> 지구청년 인스타그램</h3>
+      <a class="more" href="#">더보기 →</a>
+    </div>
+    <div class="sns-full-grid">
+      <div class="insta"><div class="insta-img" style="background:url(insta1.png) center/cover no-repeat"></div><span class="insta-icon">↗</span></div>
+      <div class="insta"><div class="insta-img" style="background:url(insta2.png) center/cover no-repeat"></div><span class="insta-icon">↗</span></div>
+      <div class="insta"><div class="insta-img" style="background:url(insta3.png) center/cover no-repeat"></div><span class="insta-icon">↗</span></div>
+      <div class="insta"><div class="insta-img" style="background:url(insta4.png) center/cover no-repeat"></div><span class="insta-icon">↗</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-comm">
+  <div class="inner">
+    <div class="comm-header">
+      <h2 class="comm-title">청년 소통 게시판</h2>
+      <div class="comm-search">
+        <input type="text" placeholder="게시글 검색">
+        <button class="comm-search-btn">🔍</button>
+      </div>
+      <a href="activity.html" class="comm-view-all">글보기 →</a>
+    </div>
+    <div class="comm-body">
+      <div>
+        <div class="comm-tabs">
+          <button class="comm-tab on" onclick="commSetTab(this,'')">전체</button>
+          <button class="comm-tab" onclick="commSetTab(this,'활동후기')">활동후기</button>
+          <button class="comm-tab" onclick="commSetTab(this,'친구모집')">친구모집</button>
+          <button class="comm-tab" onclick="commSetTab(this,'자유게시판')">자유게시판</button>
+        </div>
+        <div class="comm-list">
+          <a href="activity.html" class="comm-item" data-cat="활동후기">
+            <img class="comm-thumb" src="insta1.png" alt="">
+            <div class="comm-item-body">
+              <div class="comm-item-top"><span class="comm-badge cb-활동후기">활동후기</span><span class="comm-item-title">재외공관 인턴으로 근무하며 배운 점들</span></div>
+              <div class="comm-item-meta"><span>지구평년</span><span>2025.05.15</span></div>
+            </div>
+            <div class="comm-item-stats"><span>♡ 34</span><span>💬 4</span></div>
+          </a>
+          <a href="activity.html" class="comm-item" data-cat="친구모집">
+            <img class="comm-thumb" src="insta2.png" alt="">
+            <div class="comm-item-body">
+              <div class="comm-item-top"><span class="comm-badge cb-친구모집">친구모집</span><span class="comm-item-title">UN 진출 준비 스터디원 모집합니다 🌍</span></div>
+              <div class="comm-item-meta"><span>글로벌준비생</span><span>2025.05.14</span></div>
+            </div>
+            <div class="comm-item-stats"><span>♡ 28</span><span>💬 11</span></div>
+          </a>
+          <a href="activity.html" class="comm-item" data-cat="자유게시판">
+            <img class="comm-thumb" src="insta3.png" alt="">
+            <div class="comm-item-body">
+              <div class="comm-item-top"><span class="comm-badge cb-자유게시판">자유게시판</span><span class="comm-item-title">제주포럼 청년스피커 현장 후기 공유해요</span></div>
+              <div class="comm-item-meta"><span>청년외교관</span><span>2025.05.13</span></div>
+            </div>
+            <div class="comm-item-stats"><span>♡ 41</span><span>💬 6</span></div>
+          </a>
+          <a href="activity.html" class="comm-item" data-cat="활동후기">
+            <img class="comm-thumb" src="insta4.png" alt="">
+            <div class="comm-item-body">
+              <div class="comm-item-top"><span class="comm-badge cb-활동후기">활동후기</span><span class="comm-item-title">2025 재외공관 공공외교 현장실습원 활동 결과</span></div>
+              <div class="comm-item-meta"><span>모파랑</span><span>2025.05.10</span></div>
+            </div>
+            <div class="comm-item-stats"><span>♡ 19</span><span>💬 3</span></div>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="comm-tags-card">
+          <div class="comm-tags-title">인기 태그</div>
+          <div class="comm-tags">
+            <span class="comm-tag">#해외일경험</span>
+            <span class="comm-tag">#국제교류</span>
+            <span class="comm-tag">#UN</span>
+            <span class="comm-tag">#인턴후기</span>
+            <span class="comm-tag">#워킹홀리데이</span>
+            <span class="comm-tag">#재외공관</span>
+            <span class="comm-tag">#청년활동</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -573,8 +684,9 @@ img,svg{display:block;max-width:100%}
     '.pp-head',
     '.pp-tabs',
     '.section-social-bg .box-title',
-    '.section-social-bg .insta-grid',
-    '.section-social-bg .board-list',
+    '.section-social-bg .sns-full-grid',
+    '.section-comm .comm-header',
+    '.section-comm .comm-body',
     '.rv-head',
     '.rv-card'
   ];
@@ -589,6 +701,15 @@ img,svg{display:block;max-width:100%}
     });
   });
 })();
+
+// 청년 소통 게시판 탭 필터
+function commSetTab(btn, cat) {
+  document.querySelectorAll('.comm-tab').forEach(function(t){ t.classList.remove('on'); });
+  btn.classList.add('on');
+  document.querySelectorAll('.comm-item').forEach(function(item){
+    item.style.display = (!cat || item.dataset.cat === cat) ? 'flex' : 'none';
+  });
+}
 
 // 청년사업 포털 탭 전환
 (function(){
