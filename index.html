@@ -150,7 +150,7 @@ img,svg{display:block;max-width:100%}
 .section-social-bg{position:relative;background:url(mainback01.png) center/cover no-repeat;padding:60px 0}
 .section-social-bg:before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.94) 0%,rgba(255,255,255,.82) 50%,rgba(255,255,255,.94) 100%);pointer-events:none}
 .section-social-bg .inner{position:relative;z-index:1}
-.box-title{display:flex;align-items:center;margin-bottom:16px}.box-title h3{font-size:22px;font-weight:800}.box-title .more{margin-left:auto;color:var(--blue);font-size:15px;font-weight:700}
+.box-title{display:flex;align-items:center;margin-bottom:16px}.box-title h3{font-size:28px;font-weight:900;letter-spacing:-.04em}.box-title .more{margin-left:auto;color:var(--blue);font-size:15px;font-weight:700}
 .sns-full-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .insta{aspect-ratio:1/1;border-radius:12px;position:relative;overflow:hidden;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.12);border:1.5px solid rgba(255,255,255,.7)}
 .insta-img{position:absolute;inset:0;background-size:cover!important;background-position:center!important;transition:transform .45s ease}
@@ -166,8 +166,9 @@ img,svg{display:block;max-width:100%}
 .insta-new{position:absolute;top:12px;left:12px;background:#ff3b3b;color:#fff;font-size:11px;font-weight:800;padding:3px 8px;border-radius:4px;letter-spacing:.04em;z-index:4}
 
 /* 지구청년 활동공유 */
-.section-actcomm{background:#f4f8ff;padding:70px 0;position:relative;overflow:hidden}
-.section-actcomm::before{content:"";position:absolute;inset:0;opacity:.035;background-image:radial-gradient(circle,#1558d6 1.5px,transparent 1.5px);background-size:30px 30px;pointer-events:none}
+.section-actcomm{background:linear-gradient(120deg,#f8fbff 0%,#eef5ff 60%,#e6f0ff 100%);padding:70px 0;position:relative;overflow:hidden}
+.act-globe-deco{position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:540px;height:540px;opacity:.055;pointer-events:none;flex-shrink:0}
+.act-dots-deco{position:absolute;left:0;top:0;width:100%;height:100%;opacity:.04;background-image:radial-gradient(circle,#1558d6 1px,transparent 1px);background-size:22px 22px;pointer-events:none}
 .act-header{display:flex;align-items:center;gap:20px;margin-bottom:28px}
 .act-icon-wrap{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#1558d6,#2878f0);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 20px rgba(21,88,214,.28)}
 .act-icon-wrap svg{width:32px;height:32px;color:#fff;display:block}
@@ -567,7 +568,7 @@ img,svg{display:block;max-width:100%}
 <section class="section section-social-bg">
   <div class="inner">
     <div class="box-title">
-      <h3><img src="instalogo.png" alt="" style="height:22px;display:inline-block;vertical-align:middle;margin-right:6px"> 지구청년 인스타그램</h3>
+      <h3><img src="instalogo.png" alt="" style="height:32px;display:inline-block;vertical-align:middle;margin-right:10px"> 지구청년 인스타그램</h3>
       <a class="more" href="#">더보기 →</a>
     </div>
     <div class="sns-full-grid">
@@ -580,6 +581,29 @@ img,svg{display:block;max-width:100%}
 </section>
 
 <section class="section-actcomm">
+  <div class="act-dots-deco" aria-hidden="true"></div>
+  <svg class="act-globe-deco" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="200" cy="200" r="188" fill="none" stroke="#1558d6" stroke-width="1.8"/>
+    <ellipse cx="200" cy="200" rx="188" ry="55" fill="none" stroke="#1558d6" stroke-width="1.2"/>
+    <ellipse cx="200" cy="200" rx="188" ry="105" fill="none" stroke="#1558d6" stroke-width="1"/>
+    <ellipse cx="200" cy="200" rx="188" ry="155" fill="none" stroke="#1558d6" stroke-width="0.8"/>
+    <line x1="12" y1="200" x2="388" y2="200" stroke="#1558d6" stroke-width="1.2"/>
+    <ellipse cx="200" cy="200" rx="55" ry="188" fill="none" stroke="#1558d6" stroke-width="1.2"/>
+    <ellipse cx="200" cy="200" rx="105" ry="188" fill="none" stroke="#1558d6" stroke-width="1"/>
+    <ellipse cx="200" cy="200" rx="155" ry="188" fill="none" stroke="#1558d6" stroke-width="0.8"/>
+    <line x1="200" y1="12" x2="200" y2="388" stroke="#1558d6" stroke-width="1.2"/>
+    <circle cx="148" cy="172" r="5" fill="#1558d6"/>
+    <circle cx="235" cy="150" r="4" fill="#1558d6"/>
+    <circle cx="268" cy="205" r="5" fill="#1558d6"/>
+    <circle cx="175" cy="248" r="3.5" fill="#1558d6"/>
+    <circle cx="310" cy="175" r="3" fill="#1558d6"/>
+    <circle cx="120" cy="230" r="3" fill="#1558d6"/>
+    <line x1="148" y1="172" x2="235" y2="150" stroke="#1558d6" stroke-width="1" stroke-dasharray="4 3"/>
+    <line x1="235" y1="150" x2="268" y2="205" stroke="#1558d6" stroke-width="1" stroke-dasharray="4 3"/>
+    <line x1="268" y1="205" x2="175" y2="248" stroke="#1558d6" stroke-width="1" stroke-dasharray="4 3"/>
+    <line x1="148" y1="172" x2="120" y2="230" stroke="#1558d6" stroke-width="1" stroke-dasharray="4 3"/>
+    <line x1="235" y1="150" x2="310" y2="175" stroke="#1558d6" stroke-width="1" stroke-dasharray="4 3"/>
+  </svg>
   <div class="inner" style="position:relative;z-index:1">
     <div class="act-header">
       <div class="act-icon-wrap" aria-hidden="true">
