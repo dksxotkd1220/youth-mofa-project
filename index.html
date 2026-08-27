@@ -36,7 +36,7 @@ img,svg{display:block;max-width:100%}
 #hero:before{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.58) 0%,rgba(0,0,0,.45) 30%,rgba(0,0,0,.15) 55%,rgba(0,0,0,0) 75%);z-index:1}
 .hero-wrap{position:absolute;inset:0;display:flex;align-items:center;z-index:2}
 .hero-copy{max-width:520px;padding:0 0 0 8px}.eyebrow{font-size:17px;color:rgba(255,255,255,.9);font-weight:600;margin-bottom:18px;letter-spacing:.02em}.hero-copy h1{font-size:66px;line-height:1.12;letter-spacing:-.06em;color:#fff;margin-bottom:22px;word-break:keep-all}.hero-copy h1 strong{display:block;color:#fff}.hero-copy p{font-size:17px;line-height:1.85;color:rgba(255,255,255,.82);max-width:440px;margin-bottom:34px;word-break:keep-all}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap}.btn{height:52px;padding:0 28px;border-radius:999px;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.15);color:#fff;backdrop-filter:blur(4px);display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:800}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 10px 28px rgba(21,88,214,.4)}
+.hero-actions{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:540px}.btn{height:52px;padding:0 22px;border-radius:12px;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.15);color:#fff;backdrop-filter:blur(4px);display:inline-flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;font-weight:700;word-break:keep-all;line-height:1.35;text-align:left}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 10px 28px rgba(21,88,214,.4)}.btn-arr{font-size:16px;flex-shrink:0;opacity:.8}
 
 /* SECTION COMMON */
 .section{padding:70px 0}.section-head{display:flex;align-items:end;gap:18px;margin-bottom:22px}.section-head h2{font-size:34px;letter-spacing:-.04em}.section-head p{color:var(--muted);font-size:15px}.section-head .more{margin-left:auto;color:var(--blue);font-weight:800;font-size:14px}
@@ -245,7 +245,7 @@ img,svg{display:block;max-width:100%}
   .menu-btn{width:42px;height:42px;border-radius:10px;background:#f3f7fc;color:#173a80;display:grid;place-items:center}
 }
 @media(max-width:560px){
-  .hero-copy p br{display:none}.hero-actions{display:grid;grid-template-columns:1fr}.btn{justify-content:center;width:100%}
+  .hero-copy p br{display:none}.hero-actions{display:grid;grid-template-columns:1fr 1fr;max-width:100%}.btn{justify-content:space-between;width:100%}
   .section{padding:38px 0}.section-head h2{font-size:26px}
   .panel-card{padding:15px}.info-panel{padding:14px;border-radius:16px}.info-panel::before{opacity:.4}.info-panel::after{opacity:.04}
   .common-wrap{padding:16px}.common-head{align-items:flex-start;flex-direction:column;gap:5px}.common-head a{margin-left:0}
@@ -317,7 +317,12 @@ img,svg{display:block;max-width:100%}
       <div class="eyebrow">더 넓은 세상, 함께하는 지구청년</div>
       <h1>청년의 무대를<br><strong>세계로 넓히다</strong></h1>
       <p>지구촌이 더 가까워지는 세상,<br>외교부와 함께 당신의 도전이 세계를 바꿉니다.</p>
-      <div class="hero-actions"><a href="intro.html" class="btn primary">지구청년 소개 바로가기 <span>›</span></a><a href="overseas.html" class="btn">나에게 맞는 사업 찾기 <span>›</span></a></div>
+      <div class="hero-actions">
+        <a href="intro.html" class="btn primary"><span>나만의 지구청년<br>스타일 찾기</span><span class="btn-arr">›</span></a>
+        <a href="overseas.html" class="btn"><span>해외진출<br>지원사업(국가별)</span><span class="btn-arr">›</span></a>
+        <a href="activity.html" class="btn"><span>체험수기</span><span class="btn-arr">›</span></a>
+        <a href="#" class="btn"><span>홍보영상</span><span class="btn-arr">›</span></a>
+      </div>
     </div>
   </div>
 </section>
